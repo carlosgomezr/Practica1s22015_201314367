@@ -1,0 +1,6 @@
+digraph grafica { 
+label= "LISTA DOBLE"node [shape=record];
+subgraph g { 
+ node0[label=" id: 0 "];
+}
+}
