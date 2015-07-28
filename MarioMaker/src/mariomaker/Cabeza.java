@@ -208,5 +208,51 @@ public class Cabeza {
             return t;
     }
 
+        NodoOrto buscarF(NodoOrto lista,int numero){
+        NodoOrto aux = null;
+        NodoOrto t = null;
+        aux=buscarR(lista,numero);
+        while(aux != null){
+            if(aux.derecha==null){
+                t = aux;
+                System.out.println("buscarF encontro ");
+                return t;
+            }
+            aux = aux.derecha;
+
+          }
+             return t;
+        }
+       NodoOrto buscarC(NodoOrto lista,int numero){
+       NodoOrto aux = null;
+       NodoOrto t = null;
+       aux=buscarR(lista,numero);
+        while(aux != null){
+            if(aux.abajo==null){
+                t = aux;
+                System.out.println("buscarC encontro ");
+                return t;
+            }
+            aux = aux.abajo;
+
+        }
+            return t;
+    }
+    
+         
+        NodoOrto crearCabeza(int numero,int c, int f,String imagen){
+            NodoOrto nuevoNodo = null;
+            nuevoNodo.numero = numero;
+            nuevoNodo.c = c;
+            nuevoNodo.f = f;
+            nuevoNodo.imagen = imagen;
+            nuevoNodo.abajo = null;
+            nuevoNodo.arriba = null;
+            nuevoNodo.siguiente = null;
+            nuevoNodo.anterior = null;
+            nuevoNodo.derecha = null;
+            nuevoNodo.izquierda = null;
+        return nuevoNodo;
+         }
 
 }
