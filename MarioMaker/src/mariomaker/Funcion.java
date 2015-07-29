@@ -131,15 +131,15 @@ String ruta = "C:\\Users\\estua_000\\Documents\\NetBeansProjects\\MarioMaker\\sr
                 else{
                     if(aux.primero.next!=null){
                         while(aux.primero.next!=null){
-                            pw.write("node"+aux.primero.personaje.dato+"[label=\" id: "+aux.primero.personaje.dato+" \"];\n");
-                            pw.write("node"+aux.primero.next.personaje.dato+"[label=\" id: "+aux.primero.next.personaje.dato+" \"];\n");
+                            pw.write("node"+aux.primero.personaje.dato+"[label=\" id: "+aux.primero.personaje.dato+" nombre: "+aux.primero.personaje.nombre +" \"];\n");
+                            pw.write("node"+aux.primero.next.personaje.dato+"[label=\" id: "+aux.primero.next.personaje.dato+" nombre: "+aux.primero.next.personaje.nombre+" \"];\n");
                             pw.write("node"+aux.primero.personaje.dato+"->node"+aux.primero.next.personaje.dato+";\n");
                             pw.write("node"+aux.primero.next.personaje.dato+"->node"+aux.primero.personaje.dato+";\n");
                             aux.primero = aux.primero.next;
                         }
                     }
                     else{
-                        pw.write("node"+aux.primero.personaje.dato+"[label=\" id: "+aux.primero.personaje.dato+" \"];\n");     
+                        pw.write("node"+aux.primero.personaje.dato+"[label=\" id: "+aux.primero.personaje.dato+" nombre: "+aux.primero.personaje.nombre+" \"];\n");     
                     }
                 }
             }

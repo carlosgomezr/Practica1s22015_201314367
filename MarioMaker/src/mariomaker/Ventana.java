@@ -5,6 +5,9 @@
  */
 package mariomaker;
 
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author Carlos Gomez
@@ -15,8 +18,32 @@ public class Ventana extends javax.swing.JFrame {
     /**
      * Creates new form Ventana
      */
-    static Lista a;
+    listasdobles lista = new listasdobles();
+    listasdobles aux = lista;
+   
+    int id=1;
+       private JPanel jPanel0;
+    
+    private JScrollPane scroll;
+    int contar=0;
     public Ventana() {
+        jPanel0 = new JPanel();
+        jPanel0.setBounds(70,300,530,130);
+        add(jPanel0);
+        scroll = new JScrollPane(jPanel0);
+      //scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setBounds(70,300,530,130);
+        add(scroll);
+        
+
+        
+        /*
+        scroll = new JScrollPane(jPanel1);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setBounds(580,60,260,350);
+        add(scroll);
+        */
         initComponents();
         
     }
@@ -42,6 +69,11 @@ public class Ventana extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton12 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -57,26 +89,62 @@ public class Ventana extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 110, 100));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 110, 100));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hongo.png"))); // NOI18N
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, 100));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, 100));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ficha.png"))); // NOI18N
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 110, 100));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 110, 100));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monstruo.png"))); // NOI18N
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 100, 100));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 100, 100));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pared.JPG"))); // NOI18N
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 110, 100));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 110, 100));
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/suelo.JPG"))); // NOI18N
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 110, 100));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 110, 100));
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tortuga.png"))); // NOI18N
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 110, 100));
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 100, 100));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 110, 100));
+
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 100, 100));
 
         jButton10.setText("PILA :D ->");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -84,14 +152,35 @@ public class Ventana extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 110, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 110, -1));
 
         jButton1.setText("COLA :) ->");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 110, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 110, -1));
 
         jButton11.setText("MOSTRAR LISTA");
-        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 140, -1));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 50, 40));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 140, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 30, 40));
+
+        jLabel2.setText("MI PERSONAJE :D ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 110, -1));
+
+        jLabel3.setText("Eliminar Personaje :D");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, -1, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 110, -1));
+
+        jButton12.setText("Eliminar");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 140, -1));
 
         jMenu1.setText("Graficar");
 
@@ -131,13 +220,118 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    String nombre=jTextField1.getText();
+    Personaje b = new Personaje(id,nombre,"mario.png",1,"personaje");
+    lista.alta(b);
+    id = id+1;
+    
+    jButton2.setEnabled(false);
+    jTextField1.setText("");
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
         System.exit(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    String nombre=jTextField1.getText();
+    Personaje b = new Personaje(id,nombre,"hongo.png",1,"hongo");
+    lista.alta(b);
+    id = id+1;
+    jTextField1.setText("");
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    String nombre=jTextField1.getText();
+    Personaje b = new Personaje(id,nombre,"ficha.png",1,"ficha");
+    lista.alta(b);
+    id = id+1;      
+    jTextField1.setText("");    
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    String nombre=jTextField1.getText();
+    Personaje b = new Personaje(id,nombre,"monstruo.png",1,"monstruo");
+    lista.alta(b);
+    id = id+1;  
+    jTextField1.setText("");    
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    String nombre=jTextField1.getText();
+    Personaje b = new Personaje(id,nombre,"pared.JPG",0,"pared");
+    lista.alta(b);
+    id = id+1;  
+    jTextField1.setText("");    
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    String nombre=jTextField1.getText();
+    Personaje b = new Personaje(id,nombre,"suelo.JPG",0,"piso");
+    lista.alta(b);
+    id = id+1;  
+    jTextField1.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    String nombre=jTextField1.getText();
+    Personaje b = new Personaje(id,nombre,"tortuga.png",1,"tortuga");
+    lista.alta(b);
+    id = id+1;          
+    jTextField1.setText("");
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    String nombre=jTextField1.getText();
+    Personaje b = new Personaje(id,nombre,"castillo.png",0,"castillo");
+    lista.alta(b);
+    id = id+1;  
+    jTextField1.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    jPanel0.removeAll();
+    System.out.println("id: "+id);
+    for(int i=1;i<id;i++){
+        String nombre = aux.buscarNombre(i);
+        String path = aux.buscarPath(i);
+        int numeroid = aux.buscarid(i);
+        Portada nueva = new Portada();
+        nueva.crear(jPanel0,nombre,path,numeroid);  
+    }
+       
+       
+       Funcion f = new Funcion();
+       f.generarListaDoble(aux);
+       f.generar("lista doble xd");
+       aux.imprimirlista();
+       jPanel0.updateUI();
+       
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        jPanel0.removeAll();
+        String auxnumero = jTextField2.getText();
+        int elimina=Integer.parseInt(auxnumero);
+        System.out.println("quiero eliminar "+elimina);
+    
+    aux.delete(elimina);
+    aux.imprimirlista();
+    
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,6 +372,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -187,10 +382,14 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

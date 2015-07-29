@@ -51,7 +51,7 @@ public class MarioMaker {
         Funcion f = new Funcion();
         f.generarArchivo(lista);
         f.generar("lista simple");
-      /*
+       listasdobles a;
        a=new listasdobles();
        Personaje b = new Personaje(10,"","",1,"");
        Personaje c = new Personaje(20,"","",1,"");
@@ -64,10 +64,14 @@ public class MarioMaker {
        a.alta(e);
        a.alta(ff);
        a.imprimir2();
-       a.delete(25);
+       System.out.println(" elimino 70 ");
+       a.delete(70);
+       a.imprimir2();
+       System.out.println(" elimino 40 ");
+       a.delete(40);
        a.imprimir2();
        f.generarListaDoble(a);
-       f.generar("lista doble xd");*/
+       f.generar("lista doble xd");
     }
     
 }
