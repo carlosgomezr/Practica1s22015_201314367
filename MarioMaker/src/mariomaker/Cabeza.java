@@ -14,6 +14,11 @@ public class Cabeza {
     NodoOrto fila;
     NodoOrto columna;
     
+    Cabeza()
+    {
+        fila = null;
+        columna = null;
+    }
       public boolean estavacio()
     {
         if(fila==null) return true;
@@ -26,7 +31,7 @@ public class Cabeza {
         else return false;
     }
       
-     public Cabeza insertarfila(int dat)
+     public void insertarfila(int dat)
     {
         if(estavacio())
         {
@@ -40,7 +45,7 @@ public class Cabeza {
             nuevo.anterior = fila;
             fila= nuevo;
         }
-        return this;
+       
     }
      
      public Cabeza insertarcolumna(int dat){
@@ -208,10 +213,10 @@ public class Cabeza {
             return t;
     }
 
-        NodoOrto buscarF(NodoOrto lista,int numero){
+        NodoOrto buscarF(int numero){
         NodoOrto aux = null;
         NodoOrto t = null;
-        aux=buscarR(lista,numero);
+        aux=buscarR(fila,numero);
         while(aux != null){
             if(aux.derecha==null){
                 t = aux;
@@ -223,10 +228,10 @@ public class Cabeza {
           }
              return t;
         }
-       NodoOrto buscarC(NodoOrto lista,int numero){
+       NodoOrto buscarC(int numero){
        NodoOrto aux = null;
        NodoOrto t = null;
-       aux=buscarR(lista,numero);
+       aux=buscarR(columna,numero);
         while(aux != null){
             if(aux.abajo==null){
                 t = aux;
@@ -240,7 +245,7 @@ public class Cabeza {
     }
     
          
-        NodoOrto crearCabeza(int numero,int c, int f,String imagen){
+        NodoOrto crearNodo(int numero,int c, int f,String imagen){
             NodoOrto nuevoNodo = null;
             nuevoNodo.numero = numero;
             nuevoNodo.c = c;
@@ -255,4 +260,8 @@ public class Cabeza {
         return nuevoNodo;
          }
 
+        
+        void insertar(int numero,int col, int fil,String imagen){
+       
+        }
 }
