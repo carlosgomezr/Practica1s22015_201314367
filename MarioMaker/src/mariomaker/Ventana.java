@@ -18,12 +18,14 @@ public class Ventana extends javax.swing.JFrame {
     /**
      * Creates new form Ventana
      */
-    listasdobles lista = new listasdobles();
-    listasdobles aux = lista;
-   
+    public static listasdobles lista = new listasdobles();
+    public static listasdobles aux = lista;
+    public static listasdobles otra = new listasdobles();
     int id=1;
-       private JPanel jPanel0;
-    
+    public static int r=0;
+    private JPanel jPanel0;
+    int mario=0;
+    int castillo=0;
     private JScrollPane scroll;
     int contar=0;
     public Ventana() {
@@ -139,6 +141,7 @@ public class Ventana extends javax.swing.JFrame {
         });
         getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 110, 100));
 
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castillo.png"))); // NOI18N
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -155,6 +158,11 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 110, -1));
 
         jButton1.setText("COLA :) ->");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 110, -1));
 
         jButton11.setText("MOSTRAR LISTA");
@@ -216,15 +224,24 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
+        Make m = new Make();
+        m.estructura = 1;
+        
+        this.setVisible(false);
+        m.setVisible(true);
+        m.jLabel1.setText("PILA (LIFO)");
+        m.lista = otra;
+        m.rr = r;
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     String nombre=jTextField1.getText();
     Personaje b = new Personaje(id,nombre,"mario.png",1,"personaje");
     lista.alta(b);
+    otra.alta(b);
+    mario = id;
     id = id+1;
-    
     jButton2.setEnabled(false);
     jTextField1.setText("");
         
@@ -240,6 +257,7 @@ public class Ventana extends javax.swing.JFrame {
     String nombre=jTextField1.getText();
     Personaje b = new Personaje(id,nombre,"hongo.png",1,"hongo");
     lista.alta(b);
+    otra.alta(b);
     id = id+1;
     jTextField1.setText("");
 // TODO add your handling code here:
@@ -249,6 +267,7 @@ public class Ventana extends javax.swing.JFrame {
     String nombre=jTextField1.getText();
     Personaje b = new Personaje(id,nombre,"ficha.png",1,"ficha");
     lista.alta(b);
+    otra.alta(b);
     id = id+1;      
     jTextField1.setText("");    
 // TODO add your handling code here:
@@ -258,6 +277,7 @@ public class Ventana extends javax.swing.JFrame {
     String nombre=jTextField1.getText();
     Personaje b = new Personaje(id,nombre,"monstruo.png",1,"monstruo");
     lista.alta(b);
+    otra.alta(b);
     id = id+1;  
     jTextField1.setText("");    
 // TODO add your handling code here:
@@ -267,6 +287,7 @@ public class Ventana extends javax.swing.JFrame {
     String nombre=jTextField1.getText();
     Personaje b = new Personaje(id,nombre,"pared.JPG",0,"pared");
     lista.alta(b);
+    otra.alta(b);
     id = id+1;  
     jTextField1.setText("");    
 // TODO add your handling code here:
@@ -276,6 +297,7 @@ public class Ventana extends javax.swing.JFrame {
     String nombre=jTextField1.getText();
     Personaje b = new Personaje(id,nombre,"suelo.JPG",0,"piso");
     lista.alta(b);
+    otra.alta(b);
     id = id+1;  
     jTextField1.setText("");
         // TODO add your handling code here:
@@ -285,6 +307,7 @@ public class Ventana extends javax.swing.JFrame {
     String nombre=jTextField1.getText();
     Personaje b = new Personaje(id,nombre,"tortuga.png",1,"tortuga");
     lista.alta(b);
+    otra.alta(b);
     id = id+1;          
     jTextField1.setText("");
 
@@ -295,43 +318,101 @@ public class Ventana extends javax.swing.JFrame {
     String nombre=jTextField1.getText();
     Personaje b = new Personaje(id,nombre,"castillo.png",0,"castillo");
     lista.alta(b);
+    otra.alta(b);
+    castillo = id;
     id = id+1;  
     jTextField1.setText("");
+    jButton9.setEnabled(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-    jPanel0.removeAll();
-    System.out.println("id: "+id);
-    for(int i=1;i<id;i++){
-        String nombre = aux.buscarNombre(i);
-        String path = aux.buscarPath(i);
-        int numeroid = aux.buscarid(i);
+        jPanel0.removeAll(); 
+        jPanel0.repaint(); 
+        try{
+        
+        int auxid = 0;
+        otra.delete(auxid);
+        otra.imprimirlista();
+        listasdobles auxiliar = otra;
+        r = otra.tamaño();
+        for(int i=1;i<r;i++){
+        String nombre = auxiliar.buscarNombreInverso(i);
+        String path = auxiliar.buscarPathInverso(i);
+        int numeroid = auxiliar.buscaridInverso(i);
         Portada nueva = new Portada();
         nueva.crear(jPanel0,nombre,path,numeroid);  
+        }   
+        }catch(Exception ex){
+        
+        }
+        
+    jPanel0.updateUI();
+    /*jPanel0.removeAll();
+    listasdobles auxiliar = lista;
+    System.out.println("id: "+id);
+    r = id;
+    for(int i=1;i<id;i++){
+        String nombre = auxiliar.buscarNombre(i);
+        String path = auxiliar.buscarPath(i);
+        int numeroid = auxiliar.buscarid(i);
+        Portada nueva = new Portada();
+        nueva.crear(jPanel0,nombre,path,numeroid);  
+        
     }
        
-       
+       jPanel0.repaint();
        Funcion f = new Funcion();
-       f.generarListaDoble(aux);
+       f.generarListaDoble(auxiliar);
        f.generar("lista doble xd");
-       aux.imprimirlista();
-       jPanel0.updateUI();
-       
+       auxiliar.imprimirlista();
+       jPanel0.updateUI();*/
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        jPanel0.removeAll();
-        String auxnumero = jTextField2.getText();
-        int elimina=Integer.parseInt(auxnumero);
-        System.out.println("quiero eliminar "+elimina);
-    
-    aux.delete(elimina);
-    aux.imprimirlista();
-    
+        jPanel0.removeAll(); 
+        jPanel0.repaint(); 
+        try{
+        String sid = jTextField2.getText();
+        
+        int auxid = Integer.parseInt(sid);
+        System.out.println("mario xd :"+mario);
+        System.out.println("castillo xd: "+castillo);
+        if(auxid==mario){
+            jButton2.setEnabled(true);
+        }
+        if(auxid==castillo){
+            jButton9.setEnabled(true);
+        }
+        otra.delete(auxid);
+        otra.imprimirlista();
+        listasdobles auxiliar = otra;
+        r = otra.tamaño();
+        for(int i=1;i<r;i++){
+        String nombre = auxiliar.buscarNombreInverso(i);
+        String path = auxiliar.buscarPathInverso(i);
+        int numeroid = auxiliar.buscaridInverso(i);
+        Portada nueva = new Portada();
+        nueva.crear(jPanel0,nombre,path,numeroid);  
+        }   
+        }catch(Exception ex){
+        
+        }
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Make m = new Make();
+        m.estructura=0;
+        this.setVisible(false);
+        m.setVisible(true);
+        m.jLabel1.setText("COLA (FIFO)");
+        m.rr = otra.tamaño();
+        m.lista = otra;
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

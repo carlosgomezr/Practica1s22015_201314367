@@ -73,6 +73,19 @@ public class listasdobles {
         return nombre;
     }
     
+    public String buscarNombreInverso(int id){
+        String nombre="";
+        nodo actual;
+        actual = primero;
+        for(int i=id;i>=1;i--){ 
+            if(actual!=null){
+            nombre = actual.personaje.nombre;
+            actual = actual.next;
+            }
+        }
+        return nombre;
+    }
+    
       public String buscarPath(int id){
         String path="";
         nodo actual;
@@ -86,6 +99,19 @@ public class listasdobles {
         return path;
     }
     
+      
+       public String buscarPathInverso(int id){
+        String path="";
+        nodo actual;
+        actual = primero;
+        for(int i=id;i>=1;i--){
+            if(actual!=null){
+                path = actual.personaje.PathImagen;
+                actual = actual.next;
+            }
+        }
+        return path;
+    }
  
       public int buscarid(int id){
         int numeroid=0;
@@ -100,6 +126,24 @@ public class listasdobles {
         return numeroid;
     }
       
+      
+      public int buscaridInverso(int id){
+        int numeroid=0;
+        nodo actual;
+        actual = primero;
+        for(int i=id;i>=1;i--){
+            if(actual!=null){
+                numeroid = actual.personaje.dato;
+                actual = actual.next;
+            }
+        }
+        return numeroid;
+    }
+      
+    public void reset(){
+        primero = null;
+        ultimo = null;
+    }
       
     public boolean delete(int num)
     {
@@ -158,6 +202,22 @@ public class listasdobles {
                 System.out.println(actual.personaje.dato);
  
     }
+        public int tamaño(){
+        int t=1;
+        if( estavacio() )
+	{
+		t=0;
+	}
+	nodo actual = ultimo;
+	while( actual != null)
+	{
+                t = t+1;
+		actual = actual.ant;
+	}
+        return t;
+        }
+        
+        
         public void imprimir()
     {
         nodo actual;

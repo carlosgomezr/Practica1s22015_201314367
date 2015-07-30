@@ -32,7 +32,7 @@ public class Portada {
     
     JButton icon = new javax.swing.JButton();
     icon.setVisible(true);
-    icon.setSize(100, 100);
+    icon.setSize(75, 75);
     ImageIcon icono = new ImageIcon(portada);
     icon.setIcon(icono);
     
@@ -62,7 +62,7 @@ public class Portada {
     
     JButton icon = new javax.swing.JButton();
     icon.setVisible(true);
-    icon.setSize(100, 100);
+    icon.setSize(75, 75);
     ImageIcon icono = new ImageIcon(portada);
     icon.setIcon(icono);
     
@@ -72,6 +72,46 @@ public class Portada {
     porta.setIcon(icono);
     
     panel.add(porta);*/
+    panel.add(icon);
+    panel.validate();
+    
+    
+    /* boton2 = new javax.swing.JButton();
+ boton2.setBounds(220,40,70,100);
+ ImageIcon icon2 = new ImageIcon("2.jpg");
+ boton2.setIcon(icon2);
+ add(boton2);*/
+    }
+     
+     
+     public void crearImagen(JPanel panel,String portada,String name){
+        
+    
+    
+    JButton icon = new javax.swing.JButton();
+    icon.setVisible(true);
+    icon.setName(name);
+    icon.setSize(75, 75);
+    ImageIcon icono = new ImageIcon(portada);
+    icon.setIcon(icono);
+    
+    panel.add(icon);
+    panel.validate();
+    }
+     
+     
+     public void crearMatriz(JPanel panel,String portada,int x,int y){
+    JButton icon = new javax.swing.JButton();
+    icon.setVisible(true);
+    String name = x+","+y;
+    icon.setName(name);
+    
+    
+    ImageIcon icono = new ImageIcon(portada);
+    icon.setIcon(icono);
+    
+    icon.setBounds(x, y, 75, 75);
+    panel.setLayout(null);
     panel.add(icon);
     panel.validate();
     
