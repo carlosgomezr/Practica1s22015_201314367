@@ -249,4 +249,25 @@ public class listasdobles {
 	}
 	System.out.println("\n");
 }
+        
+        
+        public void modificarNombre(int numero,String nombre)
+{
+	if( estavacio() )
+	{
+		System.out.printf("%s vacia\n");
+	}
+	nodo actual = ultimo;
+	while( actual != null)
+	{
+                if(actual.personaje.dato==numero){
+                    System.out.println("lo encontre");
+                    actual.personaje.nombre = nombre;
+                }
+		actual = actual.ant;
+	}
+   
+}
+        
+        
 }

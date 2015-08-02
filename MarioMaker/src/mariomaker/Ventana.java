@@ -21,7 +21,7 @@ public class Ventana extends javax.swing.JFrame {
     public static listasdobles lista = new listasdobles();
     public static listasdobles aux = lista;
     public static listasdobles otra = new listasdobles();
-    public static Tcabeza matriz = new Tcabeza();
+    
     int id=1;
     public static int r=0;
     private JPanel jPanel0;
@@ -83,6 +83,11 @@ public class Ventana extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton14 = new javax.swing.JButton();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -179,7 +184,7 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 140, -1));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 30, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 520, 30, 40));
 
         jLabel2.setText("MI PERSONAJE :D ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
@@ -212,6 +217,22 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 60, 30));
+
+        jLabel6.setText("ID:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, -1, -1));
+
+        jLabel7.setText("NOMBRE:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, -1, -1));
+
+        jButton14.setText("MODIFICAR :D");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, -1, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 120, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 120, -1));
 
         jMenu1.setText("Graficar");
 
@@ -438,6 +459,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        try{
         int fila=0;
         String auxfila = jTextField3.getText();
         fila = Integer.parseInt(auxfila);
@@ -449,10 +471,28 @@ public class Ventana extends javax.swing.JFrame {
         int dato=0;
         String auxdato = jTextField5.getText();
         dato = Integer.parseInt(auxdato);
-        matriz.insertar(fila);
+        }
+        catch(Exception ex){
+        
+        }
        // matriz.insertar(dato,columna,fila,"");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        try{
+        int id=0;
+        String auxid = jTextField6.getText();
+        id = Integer.parseInt(auxid);
+        String nombre = jTextField7.getText();
+        otra.modificarNombre(id,nombre);
+        otra.imprimirlista();
+        }
+        catch(Exception ex){
+        
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -495,6 +535,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -508,6 +549,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -518,5 +561,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

@@ -122,4 +122,24 @@ public class Portada {
  boton2.setIcon(icon2);
  add(boton2);*/
     }
+     
+     public void crearLabel(JPanel panel,int nombre,int x,int y){
+    JLabel icon = new javax.swing.JLabel();
+    icon.setText(nombre+"");
+    icon.setVisible(true);
+    String name = "label"+x+","+y;
+    icon.setName(name);
+    
+    icon.setBounds(x, y, 10, 10);
+    panel.setLayout(null);
+    panel.add(icon);
+    panel.validate();
+    
+    
+    /* boton2 = new javax.swing.JButton();
+ boton2.setBounds(220,40,70,100);
+ ImageIcon icon2 = new ImageIcon("2.jpg");
+ boton2.setIcon(icon2);
+ add(boton2);*/
+    }
 }

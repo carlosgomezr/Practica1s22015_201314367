@@ -9,29 +9,26 @@ package mariomaker;
  *
  * @author Carlos Gomez
  */
-public class NodoOrto {
-    int numero;
-    int c;
-    int f;
-    String imagen;
-    NodoOrto siguiente;
-    NodoOrto anterior;
-    NodoOrto abajo;
-    NodoOrto arriba;
-    NodoOrto derecha;
-    NodoOrto izquierda;
-    NodoOrto(int numero,int c, int f, String imagen)
+public class nodoorto {
+    int a;
+    int fila;
+    int columna;
+    nodoorto next;
+    nodoorto ant;
+    nodoorto arriba;
+    nodoorto abajo;
+    nodoorto derecha;
+    nodoorto izquierda;
+    nodoorto(int a,int c,int f)
     {
-        this.numero = numero;
-        this.c = c;
-        this.f = f;
-        this.imagen = imagen;
-        this.siguiente = null;
-        this.anterior = null;
-        this.abajo = null;
-        this.arriba = null;
-        this.derecha = null;
-        this.izquierda = null;
+        this.a=a;
+        this.fila = f;
+        this.columna = c;
+        this.next=null;
+        this.ant=null;
+        this.arriba=null;
+        this.abajo=null;
+        this.derecha=null;
+        this.izquierda=null;
     }
-    
 }

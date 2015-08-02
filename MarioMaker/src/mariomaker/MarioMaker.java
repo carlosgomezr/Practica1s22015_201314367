@@ -72,6 +72,25 @@ public class MarioMaker {
        a.imprimir2();
        f.generarListaDoble(a);
        f.generar("lista doble xd");
+       
+       Raiz r = new Raiz();
+       r.insertarFila(0);
+       r.insertarFila(1);
+       r.insertarFila(3);
+       r.insertarFila(5);
+       r.insertarColumna(7);
+       r.insertarColumna(9);
+       r.insertarColumna(11);
+       r.insertarColumna(25);
+       System.out.println("FILA------->");
+       r.fila.reportarFila();
+       System.out.println("COLUMNA------->");
+       r.columna.reportarColumna();
+       System.out.println("buscar 7");
+       System.out.println(r.buscarcolumna(7));
+       System.out.println("buscar 25 xD");
+       System.out.println(r.buscarcolumna(25));
+       r.insertar();
     }
     
 }
