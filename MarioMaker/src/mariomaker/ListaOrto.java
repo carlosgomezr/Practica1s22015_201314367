@@ -40,25 +40,24 @@ public class ListaOrto {
         return this;
     }
 
-        public void reportarNodoFila()
+        public void reportarNodoFila(nodoorto ultimo)
     {
         nodoorto actual = ultimo;
         actual= actual.derecha;
         while (actual != null)
         {
-            System.out.println("    numero: "+actual.a);
-            ultimo = ultimo.derecha;
-            
+            System.out.println("    numero:T "+actual.a+" fila: "+actual.fila+" columna:"+actual.columna);
+            actual = actual.derecha;
         }
     }
         
-        public void reportarNodoColumna()
+        public void reportarNodoColumna(nodoorto ultimo)
     {
         nodoorto actual = ultimo;
         actual = actual.abajo;
         while (actual != null)
         {
-            System.out.println("    numero: "+actual.a);
+            System.out.println("    numero:T "+actual.a+" fila: "+actual.fila+" columna:"+actual.columna);
             actual = actual.abajo;
         }
     }
@@ -73,6 +72,7 @@ public class ListaOrto {
 	while( actual != null)
 	{
                 System.out.println(" dato :B "+actual.a);
+                reportarNodoFila(actual);
 		actual = actual.ant;
 	}
 	System.out.println("\n");
@@ -88,7 +88,8 @@ public class ListaOrto {
 	while( actual != null)
 	{
                 System.out.println(" dato :B "+actual.a);
-		actual = actual.ant;
+                reportarNodoColumna(actual);
+                actual = actual.ant;
 	}
 	System.out.println("\n");
 }

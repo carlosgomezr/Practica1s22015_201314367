@@ -5,6 +5,7 @@
  */
 package mariomaker;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -268,6 +269,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    if(id!=1){
         Make m = new Make();
         m.estructura = 1;
         
@@ -276,6 +278,11 @@ public class Ventana extends javax.swing.JFrame {
         m.jLabel1.setText("PILA (LIFO)");
         m.lista = otra;
         m.rr = r;
+    }
+    else{
+          JOptionPane.showMessageDialog(rootPane,"-------POR FAVOR, AGREGUE PERSONAJES A SU LISTA------");
+       
+    }
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -448,6 +455,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    if(id!=1){
         Make m = new Make();
         m.estructura=0;
         this.setVisible(false);
@@ -455,6 +463,11 @@ public class Ventana extends javax.swing.JFrame {
         m.jLabel1.setText("COLA (FIFO)");
         m.rr = otra.tamaño();
         m.lista = otra;
+    }
+    else{
+          JOptionPane.showMessageDialog(rootPane,"-------POR FAVOR, AGREGUE PERSONAJES A SU LISTA------");
+       
+    }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

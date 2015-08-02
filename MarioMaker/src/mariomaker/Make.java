@@ -102,6 +102,15 @@ public class Make extends javax.swing.JFrame {
                 nuevo.crearMatriz(jPanel0,"cielo.png", posx, posy);
             }
         }
+        Raiz matriz = new Raiz();
+        matriz.insertarFila(-1);
+        matriz.insertarColumna(-1);
+        System.out.println("MATRIZ ORTOGONAL--------");
+        for(int x = 0; x<9;x++){
+            for(int y=0; y<5;y++){
+                matriz.insertar(matriz, 0, x, y);
+            }
+        }
         jPanel0.updateUI();
         
     }
@@ -165,6 +174,11 @@ public class Make extends javax.swing.JFrame {
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, 100, -1));
 
         jButton1.setText("AGREGAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 160, -1, -1));
 
         jButton2.setText("ELIMINAR");
@@ -220,6 +234,22 @@ public class Make extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    try{
+        int auxX;
+        String posx= jTextField1.getText();
+        auxX = Integer.parseInt(posx);
+        
+        int auxY;
+        String posy= jTextField2.getText();
+        auxY = Integer.parseInt(posy);
+    }
+    catch(Exception ex){
+    
+    }    
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

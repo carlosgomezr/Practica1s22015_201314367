@@ -175,17 +175,45 @@ public class Raiz {
             if(aux.buscarfila(f)==0){
                 aux.insertarFila(f);
                 nodoorto nuevo;
-                nuevo = aux.buscarF(f);
+                nuevo = aux.buscarR(fila.ultimo,f);
                 a.izquierda = nuevo;
                 nuevo.derecha = a;
                 raiz = aux;
                 
             }
             else{
+                 if(aux.buscarcolumna(c)==0)
+                {
+                    nodoorto nuevo;
+                    nuevo = aux.buscarF(f);
+                    a.izquierda = nuevo;
+                    nuevo.derecha = a;
+                    raiz = aux;
+                }
+            }
+            if(aux.buscarcolumna(c)==0)
+            {
+                aux.insertarColumna(c);
+                nodoorto nuevo;
+                nuevo = aux.buscarR(columna.ultimo,c);
+                a.arriba = nuevo;
+                nuevo.abajo = a;
+                raiz = aux;
+            }
+            else
+            {
+                  if(aux.buscarfila(f)==0){
+                     nodoorto nuevo;
+                     nuevo = aux.buscarC(columna.ultimo,c);
+                     a.arriba = nuevo;
+                     nuevo.abajo = a;
+                     raiz = aux;
+                 }
             
             }
-        
         }
+        aux.fila.reportarFila();
+        aux.columna.reportarColumna();
         /*
         aux.insertarFila(100);
         aux.insertarColumna(500);
