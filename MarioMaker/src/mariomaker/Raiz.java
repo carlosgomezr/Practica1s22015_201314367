@@ -151,15 +151,21 @@ public class Raiz {
         return t;
     }
 
-    public Raiz insertar(){
-        Raiz r = new Raiz();
+    public Raiz insertar(Raiz raiz,int dato,int c, int f){
+        Raiz aux = new Raiz();
+        nodoorto a;
         System.out.println("probando metodo insertar");
-        r.insertarFila(100);
-        r.insertarColumna(500);
-        r.insertarFila(200);
-        r.insertarColumna(300);
-        r.fila.reportarFila();
-        r.fila.reportarColumna();
+        if(raiz==null){
+            a = new nodoorto(dato,c,f);
+            aux=raiz;
+        }
+        aux.insertarFila(100);
+        aux.insertarColumna(500);
+        aux.insertarFila(200);
+        aux.insertarColumna(300);
+        aux.fila.reportarFila();
+        aux.columna.reportarColumna();
+        
         return this;
     }
 }

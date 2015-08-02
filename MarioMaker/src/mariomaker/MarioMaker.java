@@ -90,7 +90,9 @@ public class MarioMaker {
        System.out.println(r.buscarcolumna(7));
        System.out.println("buscar 25 xD");
        System.out.println(r.buscarcolumna(25));
-       r.insertar();
+       Raiz h = new Raiz();
+       h=r.insertar(r,0,0,0);
+       
     }
     
 }
