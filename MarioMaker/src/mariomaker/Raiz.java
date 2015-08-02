@@ -120,7 +120,8 @@ public class Raiz {
         return t;
     }
     
-    
+        
+        
      public nodoorto buscarF(int numero){
         nodoorto aux;
         nodoorto t=new nodoorto(-2,-2,-2);
@@ -158,14 +159,41 @@ public class Raiz {
         if(raiz==null){
             a = new nodoorto(dato,c,f);
             aux=raiz;
+            aux.insertarFila(f);
+            a.izquierda = aux.fila.ultimo;
+            aux.fila.ultimo.derecha = a;
+            raiz = aux;
+            aux = raiz;
+            aux.insertarColumna(c);
+            a.arriba = aux.columna.ultimo;
+            aux.columna.ultimo.abajo = a;
+            raiz = aux;
         }
+        else{
+            a = new nodoorto(dato,c,f);
+            aux = raiz;
+            if(aux.buscarfila(f)==0){
+                aux.insertarFila(f);
+                nodoorto nuevo;
+                nuevo = aux.buscarF(f);
+                a.izquierda = nuevo;
+                nuevo.derecha = a;
+                raiz = aux;
+                
+            }
+            else{
+            
+            }
+        
+        }
+        /*
         aux.insertarFila(100);
         aux.insertarColumna(500);
         aux.insertarFila(200);
         aux.insertarColumna(300);
         aux.fila.reportarFila();
         aux.columna.reportarColumna();
-        
+        */
         return this;
     }
 }
