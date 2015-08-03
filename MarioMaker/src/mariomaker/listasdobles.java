@@ -141,6 +141,28 @@ public class listasdobles {
     }
       
       
+      public Personaje buscarXY(int x, int y){
+        Personaje aux= new Personaje(0,"","",0,"");
+          if( estavacio() )
+	{
+		System.out.printf("%s vacia\n");
+	}
+	nodo actual = ultimo;
+	while( actual != null)
+	{
+                if(actual.personaje.PosX==x){
+                    System.out.println("Encontre X");
+                    if(actual.personaje.PosY==y){
+                        System.out.println("Encontre Y");
+                        aux = actual.personaje;
+                    }
+                }
+		actual = actual.ant;
+	}
+        return aux;
+    }
+      
+      
       public int buscaridPila(){
         int numeroid=0;
         nodo actual;
@@ -148,12 +170,33 @@ public class listasdobles {
         System.out.println("    buscarPila"+numeroid);
         return numeroid;
     }
+      
+      
       public int buscaridCola(){
         int numeroid=0;
         nodo actual;
         numeroid=primero.personaje.dato;
         System.out.println("    buscarPila"+numeroid);
         return numeroid;
+      }
+      
+      
+      public Personaje DarObjeto(int numero){
+          Personaje auxiliar = new Personaje(0,"","",0,"");
+         if( estavacio() )
+	{
+		System.out.printf("%s vacia\n");
+	}
+	nodo actual = ultimo;
+	while( actual != null)
+	{
+                if(actual.personaje.dato==numero){
+                    System.out.println("lo encontre");
+                    auxiliar = actual.personaje;
+                }
+		actual = actual.ant;
+	} 
+          return auxiliar;
       }
       
     public void reset(){

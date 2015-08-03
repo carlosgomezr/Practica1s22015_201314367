@@ -33,6 +33,7 @@ public class Make extends javax.swing.JFrame {
     private JScrollPane scrollh;
     private JScrollPane scrollv;
     public static listasdobles lista = Ventana.otra;
+    public static listasdobles auxiliar = lista;
     public Make() {
         
         
@@ -224,7 +225,33 @@ public class Make extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    try{
+        int auxX;
+        String posx= jTextField1.getText();
+        auxX = Integer.parseInt(posx);
+        
+        int auxY;
+        String posy= jTextField2.getText();
+        auxY = Integer.parseInt(posy);
+        
+        if(estructura==0){
+            Personaje nodoaux = auxiliar.buscarXY(auxX, auxY);
+            lista.baja(nodoaux);
+            auxiliar.delete(nodoaux.dato);
+        }
+        if(estructura==1){
+            Personaje nodoaux = auxiliar.buscarXY(auxX, auxY);
+            lista.alta(nodoaux);
+            auxiliar.delete(nodoaux.dato);
+        }
+      
+    }
+    catch(Exception ex){
+    
+    }    
+
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -237,8 +264,6 @@ public class Make extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     try{
-        jPanel0.removeAll(); 
-        jPanel0.repaint();
         int auxX;
         String posx= jTextField1.getText();
         auxX = Integer.parseInt(posx);
@@ -247,6 +272,26 @@ public class Make extends javax.swing.JFrame {
         String posy= jTextField2.getText();
         auxY = Integer.parseInt(posy);
         
+        if(estructura==0){
+            int cola = lista.buscaridCola();
+            Personaje nodoaux = lista.DarObjeto(cola);
+            nodoaux.setX(auxX);
+            nodoaux.setY(auxY);
+            auxiliar.alta(nodoaux);
+            System.out.println("ESTA ES LA COLA CON POS X Y");
+            auxiliar.imprimirlista();
+            lista.delete(cola);
+        }
+        if(estructura==1){
+            int pila = lista.buscaridPila();
+            Personaje nodoaux = lista.DarObjeto(pila);
+            nodoaux.setX(auxX);
+            nodoaux.setY(auxY);
+            auxiliar.alta(nodoaux);
+            System.out.println("ESTA ES LA PILA CON POS X Y");
+            auxiliar.imprimirlista();
+            lista.delete(pila);
+        }
       
     }
     catch(Exception ex){
