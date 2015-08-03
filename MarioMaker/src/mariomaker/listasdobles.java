@@ -140,6 +140,22 @@ public class listasdobles {
         return numeroid;
     }
       
+      
+      public int buscaridPila(){
+        int numeroid=0;
+        nodo actual;
+        numeroid=ultimo.personaje.dato;
+        System.out.println("    buscarPila"+numeroid);
+        return numeroid;
+    }
+      public int buscaridCola(){
+        int numeroid=0;
+        nodo actual;
+        numeroid=primero.personaje.dato;
+        System.out.println("    buscarPila"+numeroid);
+        return numeroid;
+      }
+      
     public void reset(){
         primero = null;
         ultimo = null;

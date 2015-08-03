@@ -422,6 +422,8 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        otra.buscaridPila();
+        otra.buscaridCola();
         jPanel0.removeAll(); 
         jPanel0.repaint(); 
         try{

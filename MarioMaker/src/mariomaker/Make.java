@@ -237,6 +237,8 @@ public class Make extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     try{
+        jPanel0.removeAll(); 
+        jPanel0.repaint();
         int auxX;
         String posx= jTextField1.getText();
         auxX = Integer.parseInt(posx);
@@ -244,6 +246,8 @@ public class Make extends javax.swing.JFrame {
         int auxY;
         String posy= jTextField2.getText();
         auxY = Integer.parseInt(posy);
+        
+      
     }
     catch(Exception ex){
     
