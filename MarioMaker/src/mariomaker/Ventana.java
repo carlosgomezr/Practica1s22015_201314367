@@ -5,6 +5,10 @@
  */
 package mariomaker;
 
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -31,12 +35,15 @@ public class Ventana extends javax.swing.JFrame {
     private JScrollPane scroll;
     int contar=0;
     public Ventana() {
-        jPanel0 = new JPanel();
+        jPanel0 = new JPanel(new FlowLayout());
+        //jPanel0.setLayout(new FlowLayout());
+        // jPanel0.setLayout(new GridLayout(0,100));
+        //jPanel0.setLayout(new BoxLayout(jPanel0,BoxLayout.Y_AXIS));
         jPanel0.setBounds(70,300,530,130);
         add(jPanel0);
         scroll = new JScrollPane(jPanel0);
       //scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scroll.setBounds(70,300,530,130);
         add(scroll);
         
@@ -92,7 +99,6 @@ public class Ventana extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -238,17 +244,14 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.setText("Graficar");
 
         jMenuItem1.setText("Graficar Lista Doble");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Jugar");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Salir");
         jMenu3.addActionListener(new java.awt.event.ActionListener() {
@@ -262,11 +265,6 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-  
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
     if(id!=1){
@@ -392,7 +390,7 @@ public class Ventana extends javax.swing.JFrame {
         String path = auxiliar.buscarPathInverso(i);
         int numeroid = auxiliar.buscaridInverso(i);
         Portada nueva = new Portada();
-        nueva.crear(jPanel0,nombre,path,numeroid);  
+        nueva.crear(otra,jPanel0,nombre,path,numeroid);  
         }   
         }catch(Exception ex){
         
@@ -447,7 +445,7 @@ public class Ventana extends javax.swing.JFrame {
         String path = auxiliar.buscarPathInverso(i);
         int numeroid = auxiliar.buscaridInverso(i);
         Portada nueva = new Portada();
-        nueva.crear(jPanel0,nombre,path,numeroid);  
+        nueva.crear(otra,jPanel0,nombre,path,numeroid);  
         }   
         }catch(Exception ex){
         
@@ -509,6 +507,14 @@ public class Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Funcion f = new Funcion();
+        f.generarListaDoble(otra);
+        f.generar("LISTA DOBLE PERSONAJES JUEGO");
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -567,7 +573,6 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

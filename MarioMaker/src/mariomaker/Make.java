@@ -100,7 +100,7 @@ public class Make extends javax.swing.JFrame {
                 int posx= x*75+20;
                 int posy= 315-y*75;
                 System.out.println("set Bounds: "+posx+","+posy);
-                nuevo.crearMatriz(jPanel0,"cielo.png", posx, posy);
+                nuevo.crearMatriz(jPanel0,"cielo.png", posx, posy,x,y);
             }
         }
         Raiz matriz = new Raiz();

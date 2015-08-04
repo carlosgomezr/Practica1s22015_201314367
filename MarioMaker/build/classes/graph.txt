@@ -1,16 +1,16 @@
 digraph grafica { 
-label= "LISTA DOBLE"node [shape=record];
+label= "LISTA DOBLE  PERSONAJES"node [shape=record];
 subgraph g { 
- node10[label=" id: 10 nombre:  "];
-node20[label=" id: 20 nombre:  "];
+ node10[label=" id: 10 nombre:  tipo:  "];
+node20[label=" id: 20 nombre:  tipo:  "];
 node10->node20;
 node20->node10;
-node20[label=" id: 20 nombre:  "];
-node30[label=" id: 30 nombre:  "];
+node20[label=" id: 20 nombre:  tipo:  "];
+node30[label=" id: 30 nombre:  tipo:  "];
 node20->node30;
 node30->node20;
-node30[label=" id: 30 nombre:  "];
-node50[label=" id: 50 nombre:  "];
+node30[label=" id: 30 nombre:  tipo:  "];
+node50[label=" id: 50 nombre:  tipo:  "];
 node30->node50;
 node50->node30;
 }

@@ -122,7 +122,7 @@ String ruta = "C:\\Users\\estua_000\\Documents\\NetBeansProjects\\MarioMaker\\sr
 	    BufferedWriter bw = new BufferedWriter(escribir);
 	    PrintWriter pw = new PrintWriter(bw);
             pw.write("digraph grafica { \n");
-            pw.write("label= \"LISTA DOBLE\"");
+            pw.write("label= \"LISTA DOBLE  PERSONAJES\"");
             pw.write("node [shape=record];\n");
 	    pw.write("subgraph g { \n "); 
             if(lista!=null){
@@ -131,15 +131,15 @@ String ruta = "C:\\Users\\estua_000\\Documents\\NetBeansProjects\\MarioMaker\\sr
                 else{
                     if(aux.primero.next!=null){
                         while(aux.primero.next!=null){
-                            pw.write("node"+aux.primero.personaje.dato+"[label=\" id: "+aux.primero.personaje.dato+" nombre: "+aux.primero.personaje.nombre +" \"];\n");
-                            pw.write("node"+aux.primero.next.personaje.dato+"[label=\" id: "+aux.primero.next.personaje.dato+" nombre: "+aux.primero.next.personaje.nombre+" \"];\n");
+                            pw.write("node"+aux.primero.personaje.dato+"[label=\" id: "+aux.primero.personaje.dato+" nombre: "+aux.primero.personaje.nombre +" tipo: "+aux.primero.personaje.tipo+" \"];\n");
+                            pw.write("node"+aux.primero.next.personaje.dato+"[label=\" id: "+aux.primero.next.personaje.dato+" nombre: "+aux.primero.next.personaje.nombre+" tipo: "+aux.primero.next.personaje.tipo+" \"];\n");
                             pw.write("node"+aux.primero.personaje.dato+"->node"+aux.primero.next.personaje.dato+";\n");
                             pw.write("node"+aux.primero.next.personaje.dato+"->node"+aux.primero.personaje.dato+";\n");
                             aux.primero = aux.primero.next;
                         }
                     }
                     else{
-                        pw.write("node"+aux.primero.personaje.dato+"[label=\" id: "+aux.primero.personaje.dato+" nombre: "+aux.primero.personaje.nombre+" \"];\n");     
+                        pw.write("node"+aux.primero.personaje.dato+"[label=\" id: "+aux.primero.personaje.dato+" nombre: "+aux.primero.personaje.nombre+" tipo: "+aux.primero.personaje.tipo+" \"];\n");     
                     }
                 }
             }
