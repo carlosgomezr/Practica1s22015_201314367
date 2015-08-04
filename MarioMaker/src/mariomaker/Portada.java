@@ -21,7 +21,7 @@ import javax.swing.JTextField;
  */
 public class Portada {
     
-    public void crear(listasdobles lista,JPanel panel, String album, String portada, int id){
+    public void crear(listasdobles lista,JPanel panel, String album, String portada, int id,int mario, int castillo,JButton bmario, JButton bcastillo){
         
    JLabel numero = new JLabel("No. "+id);
    numero.setVisible(true);
@@ -87,6 +87,12 @@ public class Portada {
             System.out.println("este es el clic id "+id);
             lista.delete(id);
             panel.updateUI();
+            if(mario==id){
+                bmario.setEnabled(true);
+            }
+            if(castillo==id){
+                bcastillo.setEnabled(true);
+            }
        }
    });
     panel.add(eliminar);

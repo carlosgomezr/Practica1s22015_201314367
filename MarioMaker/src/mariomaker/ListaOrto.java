@@ -46,7 +46,7 @@ public class ListaOrto {
         actual= actual.derecha;
         while (actual != null)
         {
-            System.out.println("    numero:T "+actual.a+" fila: "+actual.fila+" columna:"+actual.columna);
+            System.out.println("    numero:T "+actual.a+" fila: "+actual.fila+" columna:"+actual.columna+" nombre: "+actual.personaje.nombre);
             actual = actual.derecha;
         }
     }
@@ -57,7 +57,7 @@ public class ListaOrto {
         actual = actual.abajo;
         while (actual != null)
         {
-            System.out.println("    numero:T "+actual.a+" fila: "+actual.fila+" columna:"+actual.columna);
+            System.out.println("    numero:T "+actual.a+" fila: "+actual.fila+" columna:"+actual.columna+" nombre: "+actual.personaje.nombre);
             actual = actual.abajo;
         }
     }

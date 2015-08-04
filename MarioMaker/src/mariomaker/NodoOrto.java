@@ -13,6 +13,7 @@ public class nodoorto {
     int a;
     int fila;
     int columna;
+    Personaje personaje;
     nodoorto next;
     nodoorto ant;
     nodoorto arriba;
@@ -30,5 +31,7 @@ public class nodoorto {
         this.abajo=null;
         this.derecha=null;
         this.izquierda=null;
+        Personaje p = new Personaje(0,"a","b",0,"c");
+        this.personaje = p;
     }
 }

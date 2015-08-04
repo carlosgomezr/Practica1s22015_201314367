@@ -96,8 +96,12 @@ ntln(r.buscarcolumna(7));
        r.insertar(r,0, 0, 1);
        r.insertar(r,0, 1, 2);
        r.insertar(r,5, 1, 3);
-       
-       
+       System.out.println("vamos come on");
+       Personaje prueba = new Personaje(10,"prueba","prueba.txt",100,"heroe");
+       r.darPersonaje(2, 1, prueba);
+       System.out.println(" dar personaje a un nodo de la orto");
+       r.fila.reportarFila();
+       r.columna.reportarColumna();
     }
     
 }

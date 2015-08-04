@@ -344,7 +344,7 @@ public class Ventana extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
     String nombre=jTextField1.getText();
-    Personaje b = new Personaje(id,nombre,"suelo.JPG",0,"piso");
+    Personaje b = new Personaje(id,nombre,"suelo.JPG",0,"suelo");
     lista.alta(b);
     otra.alta(b);
     id = id+1;  
@@ -390,7 +390,7 @@ public class Ventana extends javax.swing.JFrame {
         String path = auxiliar.buscarPathInverso(i);
         int numeroid = auxiliar.buscaridInverso(i);
         Portada nueva = new Portada();
-        nueva.crear(otra,jPanel0,nombre,path,numeroid);  
+        nueva.crear(otra,jPanel0,nombre,path,numeroid,mario,castillo,jButton2,jButton9);  
         }   
         }catch(Exception ex){
         
@@ -445,7 +445,7 @@ public class Ventana extends javax.swing.JFrame {
         String path = auxiliar.buscarPathInverso(i);
         int numeroid = auxiliar.buscaridInverso(i);
         Portada nueva = new Portada();
-        nueva.crear(otra,jPanel0,nombre,path,numeroid);  
+        nueva.crear(otra,jPanel0,nombre,path,numeroid,mario,castillo,jButton2,jButton9);  
         }   
         }catch(Exception ex){
         

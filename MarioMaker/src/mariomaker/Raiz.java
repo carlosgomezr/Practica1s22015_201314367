@@ -56,7 +56,35 @@ public class Raiz {
         }
         return this;
     }
-  
+    public void darPersonaje(int fil,int col,Personaje p){
+    Personaje aux = p;
+        nodoorto q = fila.ultimo;
+        while(q!=null){
+            if(q.a==fil){
+                System.out.println("    si existe la fila");
+                nodoorto t = q;
+                while(t!=null){
+                    if(t.a==col){
+                       System.out.println("    si existe la columna");
+                        t.personaje = aux;
+                        q = t;
+                    }
+                    else{
+                        System.out.println("    NO existe la columnaa");
+                       
+                    }
+                        t = t.ant;
+                }
+            }
+            else{
+                System.out.println("    NO existe la fila");
+               
+            }
+             q = q.ant;
+        }
+        
+    
+    }
   
     public int buscarfila(int fil){
         nodoorto q = fila.ultimo;
@@ -78,6 +106,7 @@ public class Raiz {
         return flag;
     }
     
+  
     
     public int buscarcolumna(int col){
         nodoorto q = columna.ultimo;
