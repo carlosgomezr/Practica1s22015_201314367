@@ -31,7 +31,7 @@ public class nodoorto {
         this.abajo=null;
         this.derecha=null;
         this.izquierda=null;
-        Personaje p = new Personaje(0,"a","b",0,"c");
+        Personaje p = new Personaje(0,"vacio","vacio",0,"vacio");
         this.personaje = p;
     }
 }

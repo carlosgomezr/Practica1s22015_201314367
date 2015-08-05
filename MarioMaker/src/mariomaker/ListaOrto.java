@@ -5,6 +5,12 @@
  */
 package mariomaker;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /**
  *
  * @author Carlos Gomez
@@ -50,6 +56,66 @@ public class ListaOrto {
             actual = actual.derecha;
         }
     }
+         public void graphMatriz(){
+            String ruta = "C:\\Users\\estua_000\\Documents\\NetBeansProjects\\MarioMaker\\src\\graph.txt";
+            String auxfila = graphFila();
+	    File f;
+	    FileWriter escribir;
+	    try{
+	    System.out.println(ruta);
+	    f = new File(ruta);
+	    escribir = new FileWriter(f);
+	    BufferedWriter bw = new BufferedWriter(escribir);
+	    PrintWriter pw = new PrintWriter(bw);
+            pw.write("digraph grafica { \n");
+            pw.write("label= \"MATRIZ ORTOGONAL\"");
+            pw.write("node [shape=record];\n");
+            pw.write("rankdir=TB;\n");
+            pw.write("rank=same");
+            pw.write("node [shape=record];\n");
+	    pw.write("subgraph g { \n "); 
+            pw.write(auxfila);
+            pw.write("}\n");
+	    pw.write("}\n");
+	    pw.close();
+	    bw.close();
+	    }
+	    catch(IOException e){System.out.println("Error: "+e.getMessage());
+            
+            }
+          }
+            
+    public String graphFila()
+{
+    String aux="";
+	if( estavacio() )
+	{
+		System.out.printf("%s vacia\n");
+	}
+	nodoorto actual = ultimo;
+	while( actual != null)
+	{
+                aux = aux+ graphNodoFila(actual);
+		actual = actual.ant;
+	}
+    return aux;
+} 
+        public String graphNodoFila(nodoorto ultimo){
+         
+            String auxiliar ="";
+            nodoorto actual = ultimo;
+            actual = actual.derecha;
+            while (actual != null)
+            {
+                auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"[label=\" id: "+actual.a+" nombre: "+actual.personaje.nombre +" tipo: "+actual.personaje.tipo+" \"];\n";
+                auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"[label=\" id: "+actual.derecha.a+" nombre: "+actual.derecha.personaje.nombre +" tipo: "+actual.derecha.personaje.tipo+" \"];\n";
+                auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"->nodef"+actual.fila+"c"+actual.columna+";\n";
+                auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"->nodef"+actual.derecha.fila+"c"+actual.derecha.columna+";\n";
+                actual = actual.derecha;
+            }
+            
+            return auxiliar;
+        }
         
         public void reportarNodoColumna(nodoorto ultimo)
     {
