@@ -26,7 +26,7 @@ public class Ventana extends javax.swing.JFrame {
     public static listasdobles lista = new listasdobles();
     public static listasdobles aux = lista;
     public static listasdobles otra = new listasdobles();
-    
+    public static int estructura=0;
     int id=1;
     public static int r=0;
     private JPanel jPanel0;
@@ -79,7 +79,6 @@ public class Ventana extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -96,6 +95,7 @@ public class Ventana extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -191,7 +191,6 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 140, -1));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 520, 30, 40));
 
         jLabel2.setText("MI PERSONAJE :D ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
@@ -226,10 +225,10 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 60, 30));
 
         jLabel6.setText("ID:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, -1, -1));
 
         jLabel7.setText("NOMBRE:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, -1, -1));
 
         jButton14.setText("MODIFICAR :D");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -237,9 +236,12 @@ public class Ventana extends javax.swing.JFrame {
                 jButton14ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, -1, -1));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 120, -1));
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 120, -1));
+        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, -1, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, 120, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, 120, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castillo mario.jpg"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 800, 560));
 
         jMenu1.setText("Graficar");
 
@@ -268,8 +270,8 @@ public class Ventana extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
     if(id!=1){
+        estructura = 1;
         Make m = new Make();
-        m.estructura = 1;
         
         this.setVisible(false);
         m.setVisible(true);
@@ -456,8 +458,9 @@ public class Ventana extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     if(id!=1){
+        estructura = 0;
         Make m = new Make();
-        m.estructura=0;
+       
         this.setVisible(false);
         m.setVisible(true);
         m.jLabel1.setText("COLA (FIFO)");
@@ -565,13 +568,13 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;

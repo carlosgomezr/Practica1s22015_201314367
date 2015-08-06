@@ -5,6 +5,7 @@
  */
 package mariomaker;
 
+
 /**
  *
  * @author Carlos Gomez
@@ -15,10 +16,13 @@ public class MarioMaker {
      * @param args the command line arguments
      */
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
+    
+     
         Ventana v = new Ventana();
         v.setVisible(true);
         // TODO code application logic here
+        /*
         Lista lista = new Lista();
         lista.insertarAlFrente( 2 );
         lista.imprimir();
@@ -28,7 +32,7 @@ public class MarioMaker {
         lista.imprimir();
         lista.insertarAlFinal( 8 );
         lista.imprimir();
-    
+    */
     try
 {
         /*Object objetoEliminado = lista.eliminarDelFrente();
@@ -48,6 +52,7 @@ public class MarioMaker {
         {
         excepcionListaVacia.printStackTrace();
         }
+      /*
         Funcion f = new Funcion();
         f.generarArchivo(lista);
         f.generar("lista simple");
@@ -72,7 +77,7 @@ public class MarioMaker {
        a.imprimir2();
        f.generarListaDoble(a);
        f.generar("lista doble xd");
-       
+       */
        Raiz r = new Raiz();
       /* r.insertarFila(0);
        r.insertarFila(1);
@@ -93,19 +98,32 @@ ntln(r.buscarcolumna(7));
        Raiz h = new Raiz();
        r.insertarFila(-1);
        r.insertarColumna(-1);
+      /* 
        r.insertar(r,10, 0, 1);
        r.insertar(r,20, 7, 2);
        r.insertar(r,30, 7, 4);
        r.insertar(r,40, 1, 2);
        r.insertar(r,50, 1, 3);
+       r.insertar(r,60, 5, 4);
+       r.insertar(r,70, 1, 8);
+       r.insertar(r,80, 5, 3);
+   */
+       for(int i=0;i<3;i++){
+           for(int j=0;j<3;j++){
+               r.insertar(r,0,i,j);
+           }
+       }
        System.out.println("vamos come on");
        Personaje prueba = new Personaje(10,"prueba","prueba.txt",100,"heroe");
-       r.darPersonaje(2,7,prueba);
        r.darPersonaje(2,1, prueba);
-       System.out.println(" dar personaje a un nodo de la orto");
+       //r.darPersonaje(3,1, prueba);
+       //System.out.println(" dar personaje a un nodo de la orto");
        r.fila.reportarFila();
        r.columna.reportarColumna();
-       r.fila.graphMatriz();
+       r.columna.graphMatriz(r.fila.ultimo, r.columna.ultimo);
+     
+      // r.changePersonaje(2, 1, prueba);
+       
        Funcion fun = new Funcion();
        fun.generar("Matriz Ortogonal");
     }

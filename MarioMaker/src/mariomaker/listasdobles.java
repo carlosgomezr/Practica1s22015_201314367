@@ -164,38 +164,35 @@ public class listasdobles {
       
       
       public int buscaridPila(){
-        int numeroid=0;
         nodo actual;
-        numeroid=ultimo.personaje.dato;
-        System.out.println("    buscarPila"+numeroid);
-        return numeroid;
+        actual = ultimo;
+        return actual.personaje.dato;
     }
       
       
       public int buscaridCola(){
-        int numeroid=0;
         nodo actual;
-        numeroid=primero.personaje.dato;
-        System.out.println("    buscarPila"+numeroid);
-        return numeroid;
+        actual=primero;
+        return actual.personaje.dato;
       }
       
       
-      public Personaje DarObjeto(int numero){
+      public Personaje DarObjetoCola(){
           Personaje auxiliar = new Personaje(0,"","",0,"");
-         if( estavacio() )
-	{
-		System.out.printf("%s vacia\n");
-	}
-	nodo actual = ultimo;
-	while( actual != null)
-	{
-                if(actual.personaje.dato==numero){
-                    System.out.println("lo encontre");
-                    auxiliar = actual.personaje;
-                }
-		actual = actual.ant;
-	} 
+          nodo actual = ultimo;
+          while(actual!=null){
+              auxiliar = actual.personaje;
+              actual = actual.ant;
+          }
+         // Personaje auxiliar = new Personaje(0,"","",0,"");
+         // auxiliar = primero.personaje;
+          return auxiliar;
+      }
+      
+      
+      public Personaje DarObjetoPila(){
+          Personaje auxiliar = new Personaje(0,"","",0,"");
+          auxiliar = ultimo.personaje;
           return auxiliar;
       }
       

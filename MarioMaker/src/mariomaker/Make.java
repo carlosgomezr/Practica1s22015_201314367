@@ -18,7 +18,7 @@ public class Make extends javax.swing.JFrame {
     /**
      * Creates new form Make
      */
-    public static int estructura;
+    public static int estructura = Ventana.estructura;
     // 0 es cola
     // 1 es pila
     public static int horiginal=0;
@@ -66,16 +66,24 @@ public class Make extends javax.swing.JFrame {
         listasdobles auxiliar = lista;
         rr = lista.tamaño();
         System.out.println("esta es la r tamaño"+lista.tamaño());
+        
         for(int i=1;i<rr;i++){
-        
-        String path = auxiliar.buscarPathInverso(i);
-        String name = auxiliar.buscarNombreInverso(i);
+        String path="";
+        String name="";
+            if(estructura==0){
+                path = auxiliar.buscarPathInverso(i);
+                name = auxiliar.buscarNombreInverso(i);
+            }         
+            if(estructura==1){
+                path = auxiliar.buscarPath(i);
+                name = auxiliar.buscarNombre(i);
+            }
         Portada nueva = new Portada();
-        
         nueva.crearImagen(jPanel1,path,name);  
-        
         }   
-        
+    
+ 
+           
         
         jPanel1.updateUI();
         jPanel0.updateUI();
@@ -93,16 +101,8 @@ public class Make extends javax.swing.JFrame {
             Portada nuevo = new Portada();
             nuevo.crearLabel(jPanel0, y, posx, posy);
         }
+    
         
-        for(int x = 0; x<9; x++){
-            for(int y = 0;y<5;y++){
-                Portada nuevo = new Portada();
-                int posx= x*75+20;
-                int posy= 315-y*75;
-                System.out.println("set Bounds: "+posx+","+posy);
-                nuevo.crearMatriz(jPanel0,"cielo.png", posx, posy,x,y);
-            }
-        }
         Raiz matriz = new Raiz();
         matriz.insertarFila(-1);
         matriz.insertarColumna(-1);
@@ -112,8 +112,19 @@ public class Make extends javax.swing.JFrame {
                 matriz.insertar(matriz, 0, x, y);
             }
         }
-        jPanel0.updateUI();
         
+        for(int x = 0; x<9; x++){
+            for(int y = 0;y<5;y++){
+                Portada nuevo = new Portada();
+                int posx= x*75+20;
+                int posy= 315-y*75;
+                System.out.println("set Bounds: "+posx+","+posy);
+                nuevo.crearMatriz(jPanel1,jPanel0,"cielo.png", posx, posy,x,y,lista,estructura,matriz);
+            }
+        }
+    
+        jPanel0.updateUI();
+        System.out.println("    ESTURCTURA "+estructura);
     }
 
     /**
@@ -142,6 +153,7 @@ public class Make extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -215,6 +227,10 @@ public class Make extends javax.swing.JFrame {
         jButton6.setText("ELIMINAR Y");
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 590, 120, -1));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/world mario.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 620));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -274,7 +290,7 @@ public class Make extends javax.swing.JFrame {
         
         if(estructura==0){
             int cola = lista.buscaridCola();
-            Personaje nodoaux = lista.DarObjeto(cola);
+            Personaje nodoaux = lista.DarObjetoCola();
             nodoaux.setX(auxX);
             nodoaux.setY(auxY);
             auxiliar.alta(nodoaux);
@@ -284,7 +300,7 @@ public class Make extends javax.swing.JFrame {
         }
         if(estructura==1){
             int pila = lista.buscaridPila();
-            Personaje nodoaux = lista.DarObjeto(pila);
+            Personaje nodoaux = lista.DarObjetoPila();
             nodoaux.setX(auxX);
             nodoaux.setY(auxY);
             auxiliar.alta(nodoaux);
@@ -344,6 +360,7 @@ public class Make extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     public static javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

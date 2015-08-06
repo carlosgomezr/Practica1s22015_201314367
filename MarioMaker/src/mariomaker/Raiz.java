@@ -58,7 +58,7 @@ public class Raiz {
     }
   
     public void darNodofila(nodoorto ultimo,int fil,int col, Personaje p){
-      nodoorto actual = ultimo;
+        nodoorto actual = ultimo;
         actual= actual.derecha;
         while (actual != null)
         {
@@ -69,6 +69,7 @@ public class Raiz {
                 if(actual.columna==col){
                     System.out.println("        existe columna :B "+actual.columna+" fil: "+actual.fila);
                     actual.personaje = p;
+                    System.out.println(" hice el cambio ");
                 }
             }
             else{
@@ -89,6 +90,7 @@ public class Raiz {
                 if(actual.fila==fil){
                     System.out.println("        existe columna :B "+actual.columna+" fil: "+actual.fila);
                     actual.personaje = p;
+                    System.out.println(" hice el cambio ");
                 }
             }
             else{
@@ -152,6 +154,7 @@ public class Raiz {
         if (band == 0){
                 flag = 0;
         }
+
         return flag;
     }
     
@@ -177,6 +180,51 @@ public class Raiz {
         return flag;
     }
     
+    public void changePersonaje(int f, int c,Personaje p){
+        nodoorto q = fila.ultimo;
+        while(q !=null){
+            if(q.a ==f){
+                nodoorto t = q;
+                System.out.println("     ENCONTRE FILA ");
+                while(t !=null){
+                    if(t.columna == c){
+                            t.personaje = p;
+                    }
+                    else{
+                        System.out.println("     NO ENCONTRE COLUMNA "+c +" COLUMNA ACTUAL "+t.columna);
+                    }
+                     t = t.derecha;
+                }
+            }else{
+                System.out.println("     NO ENCONTRE FILA ");
+            }
+            q = q.ant;
+        }
+        
+    }
+    
+    public void buscarnodo(int f, int c){
+        nodoorto q = fila.ultimo;
+        while(q !=null){
+            if(q.a ==f){
+                nodoorto t = q;
+                System.out.println("     ENCONTRE FILA ");
+                while(t !=null){
+                    if(t.columna == c){
+                       System.out.println("     dato persona nodo "+t.personaje.nombre);
+                    }
+                    else{
+                        System.out.println("     NO ENCONTRE COLUMNA "+c +" COLUMNA ACTUAL "+t.columna);
+                    }
+                     t = t.derecha;
+                }
+            }else{
+                System.out.println("     NO ENCONTRE FILA ");
+            }
+            q = q.ant;
+        }
+        
+    }
     
         public nodoorto buscarR(nodoorto lista,int numero){
         nodoorto q = lista;
@@ -191,9 +239,6 @@ public class Raiz {
                 return t;
             }
             q = q.next;
-        }
-        if (band == 0){
-              //  return 0;
         }
         return t;
     }
@@ -230,6 +275,63 @@ public class Raiz {
         return t;
     }
 
+     public nodoorto encontrarfila(int fil){
+        nodoorto q = fila.ultimo;
+        nodoorto t= new nodoorto(-2,-2,-2);
+        int i = 1, band = 0;
+        while (q != null)
+        {
+            if (q.a== fil)
+            {
+                band = 1;
+                t = q;
+                return t;
+            }
+            q = q.ant;
+            i++;
+        }
+        return t;
+    }
+    
+     public nodoorto encontrarcolumna(int col){
+         nodoorto q = columna.ultimo;
+         nodoorto t = new nodoorto(-2,-2,-2);
+          int i = 1, band = 0;
+        while (q != null)
+        {
+            if (q.a== col)
+            {
+                band = 1;
+                t = q;
+                return t;
+            }
+            q = q.ant;
+            i++;
+        }
+        return t;
+     }
+    public nodoorto FinalFila(nodoorto lista){
+        nodoorto q = lista;
+        nodoorto t=new nodoorto(-2,-2,-2);
+        while (q != null)
+        {
+            t = q;
+            q = q.derecha;
+        }
+        return t;
+    }
+    
+    public nodoorto FinalColumna(nodoorto lista){
+        nodoorto q = lista;
+        nodoorto t= new nodoorto(-2,-2,-2);
+         while (q != null)
+        {
+                t = q;         
+                q = q.abajo;
+        }
+        return t;
+    }
+    
     public Raiz insertar(Raiz raiz,int dato,int c, int f){
         Raiz aux = new Raiz();
         nodoorto a;
@@ -248,56 +350,83 @@ public class Raiz {
             raiz = aux;
         }
         else{
+            
             a = new nodoorto(dato,c,f);
             aux = raiz;
-            if(aux.buscarfila(f)==0){
-                System.out.println("        if aux.buscarfila");
-                aux.insertarFila(f);
-                nodoorto nuevo;
-                nuevo = aux.buscarR(fila.ultimo,f);
-                a.izquierda = nuevo;
-                nuevo.derecha = a;
-                raiz = aux;
-                
-            } else
-            {
-                if(aux.buscarcolumna(c)==0)
-                {
-                    System.out.println("    else aux.buscarcolumna");
-                    nodoorto nuevoNodo;
-                    nuevoNodo = buscarF(aux.fila.ultimo,f);
-                    a.izquierda = nuevoNodo;
-                    nuevoNodo.derecha = a;
-                    raiz = aux;
-                }
-
-
+            if((aux.buscarfila(f)==1)&(aux.buscarcolumna(c)==1)) {
+                    nodoorto auxnuevo;
+                    auxnuevo = aux.FinalColumna(aux.encontrarcolumna(c));
+                    System.out.println("    nodo aux.FinalFila f "+auxnuevo.fila+" c "+auxnuevo.columna);
+                    a.arriba = auxnuevo;
+                    auxnuevo.abajo = a;
+                    
+                    
+                    nodoorto auxnuevo2;
+                    auxnuevo2 = aux.FinalFila(aux.encontrarfila(f));
+                    System.out.println("    nodo de aux.FinalColumna f "+auxnuevo2.fila+" c "+auxnuevo2.columna);
+                    a.izquierda = auxnuevo2;
+                    auxnuevo2.derecha = a;
+                    raiz = aux;            
             }
-           
-            if(aux.buscarcolumna(c)==0)
-            {
-                System.out.println("        if aux.buscarcolumna");
-                nodoorto colaux=columna.ultimo;
+            if((aux.buscarfila(f)==0)&(aux.buscarcolumna(c)==0)) {
+                aux.insertarFila(f);
                 aux.insertarColumna(c);
                 nodoorto nuevo;
+                nuevo = aux.buscarR(fila.ultimo,f);
+                nodoorto nuevoc;
+                nuevoc = aux.buscarR(columna.ultimo,c);
+                a.izquierda = nuevo;
+                nuevo.derecha = a;
+                a.arriba = nuevoc;
+                nuevoc.abajo = a;
+                raiz = aux;
+               
+            }
+             if((aux.buscarfila(f)==0)&(aux.buscarcolumna(c)==1)){
+                    aux.insertarFila(f);
+                    nodoorto nuevof;
+                    nuevof = aux.buscarR(fila.ultimo,f);
+                    nodoorto auxnuevo;
+                    auxnuevo = aux.FinalColumna(aux.encontrarcolumna(c));
+                    System.out.println("    nodo de aux.FinalColumna "+auxnuevo.fila+" c "+auxnuevo.columna);
+                    a.izquierda = nuevof;
+                    nuevof.derecha = a;
+                    a.arriba = auxnuevo;
+                    auxnuevo.abajo = a;
+                    raiz = aux;   
+             }
+                
+            if((aux.buscarcolumna(c)==0)&(aux.buscarfila(f)==0)){
+                aux.insertarColumna(c);
+                aux.insertarFila(f);
+                nodoorto nuevo;
                 nuevo = aux.buscarR(columna.ultimo,c);
+                nodoorto nuevof;
+                nuevof = aux.buscarR(fila.ultimo,f);
                 a.arriba = nuevo;
                 nuevo.abajo = a;
+                a.izquierda = nuevof;
+                nuevof.derecha = a;
                 raiz = aux;
+                
             }
-             else
-            {
-                 if(buscarfila(f)==0){
-                     System.out.println("    else aux.buscarfila");
-                     nodoorto nuevoNodo;
-                     nuevoNodo = buscarC(aux.columna.ultimo,c);
-                     a.arriba = nuevoNodo;
-                     nuevoNodo.abajo = a;
-                     raiz = aux;
-                 }
-             
-            }
-           
+            if((aux.buscarcolumna(c)==0)&(aux.buscarfila(f)==1)){
+                    aux.insertarColumna(c);
+                    nodoorto nuevoc;
+                    nuevoc = aux.buscarR(columna.ultimo,c);
+                    nodoorto auxnuevo;
+                    auxnuevo = aux.FinalFila(aux.encontrarfila(f));
+                    System.out.println("    nodo de aux.FinalFila f "+auxnuevo.fila+" c "+auxnuevo.columna);
+                    a.izquierda = auxnuevo;
+                    auxnuevo.derecha = a;
+                    a.arriba = nuevoc;
+                    nuevoc.abajo = a;
+                    raiz = aux;
+                }
+            else{
+                    
+            }  
+            
         }
         aux.fila.reportarFila();
         aux.columna.reportarColumna();
