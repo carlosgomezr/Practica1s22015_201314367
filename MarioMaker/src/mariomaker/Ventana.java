@@ -393,6 +393,8 @@ public class Ventana extends javax.swing.JFrame {
         int numeroid = auxiliar.buscaridInverso(i);
         Portada nueva = new Portada();
         nueva.crear(otra,jPanel0,nombre,path,numeroid,mario,castillo,jButton2,jButton9);  
+        System.out.println("    este es mi primero "+otra.primero.personaje.nombre);
+        System.out.println("    este es mi ultimo "+otra.ultimo.personaje.nombre);
         }   
         }catch(Exception ex){
         

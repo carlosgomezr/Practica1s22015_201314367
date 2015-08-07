@@ -56,7 +56,8 @@ public class Raiz {
         }
         return this;
     }
-  
+
+    
     public void darNodofila(nodoorto ultimo,int fil,int col, Personaje p){
         nodoorto actual = ultimo;
         actual= actual.derecha;
@@ -64,16 +65,16 @@ public class Raiz {
         {
             if(actual.fila==fil){
                
-                System.out.println("    existe fila "+actual.fila+" col: "+actual.columna);
-                System.out.println("        parametros() f "+fil+"  c " + col);
+                //System.out.println("    existe fila "+actual.fila+" col: "+actual.columna);
+               // System.out.println("        parametros() f "+fil+"  c " + col);
                 if(actual.columna==col){
-                    System.out.println("        existe columna :B "+actual.columna+" fil: "+actual.fila);
+               //     System.out.println("        existe columna :B "+actual.columna+" fil: "+actual.fila);
                     actual.personaje = p;
-                    System.out.println(" hice el cambio ");
+             //       System.out.println(" hice el cambio ");
                 }
             }
             else{
-                System.out.println("    no existe fila "+actual.fila+" col: "+actual.columna);
+           //     System.out.println("    no existe fila "+actual.fila+" col: "+actual.columna);
             }
                 actual = actual.derecha;
         }
@@ -86,15 +87,15 @@ public class Raiz {
         {
             if(actual.columna==col){
                
-                System.out.println("    existe fila "+actual.fila+" col: "+actual.columna);
+         //       System.out.println("    existe fila "+actual.fila+" col: "+actual.columna);
                 if(actual.fila==fil){
-                    System.out.println("        existe columna :B "+actual.columna+" fil: "+actual.fila);
+     //               System.out.println("        existe columna :B "+actual.columna+" fil: "+actual.fila);
                     actual.personaje = p;
-                    System.out.println(" hice el cambio ");
+       //             System.out.println(" hice el cambio ");
                 }
             }
             else{
-                System.out.println("    no existe fila "+actual.fila+" col: "+actual.columna);
+   //             System.out.println("    no existe fila "+actual.fila+" col: "+actual.columna);
             }
                 actual = actual.abajo;
         }
@@ -203,15 +204,17 @@ public class Raiz {
         
     }
     
-    public void buscarnodo(int f, int c){
+    public Personaje buscarnodo(int f, int c){
         nodoorto q = fila.ultimo;
+        Personaje p = new Personaje(0,"","",0,"");
         while(q !=null){
             if(q.a ==f){
                 nodoorto t = q;
                 System.out.println("     ENCONTRE FILA ");
                 while(t !=null){
                     if(t.columna == c){
-                       System.out.println("     dato persona nodo "+t.personaje.nombre);
+                       System.out.println("     DATO PERSONAJE NODO "+t.personaje.nombre);
+                       p = t.personaje;
                     }
                     else{
                         System.out.println("     NO ENCONTRE COLUMNA "+c +" COLUMNA ACTUAL "+t.columna);
@@ -223,7 +226,14 @@ public class Raiz {
             }
             q = q.ant;
         }
-        
+        return p;
+    }
+    public Personaje getPersonaje(int f, int c){
+    Personaje p = buscarnodo(f,c);
+        System.out.println("    Personaje");
+        System.out.println("        nombre "+p.nombre);
+        System.out.println("        paht   "+p.PathImagen);
+        return p;
     }
     
         public nodoorto buscarR(nodoorto lista,int numero){

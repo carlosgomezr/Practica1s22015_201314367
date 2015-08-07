@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -163,49 +164,102 @@ public class Portada {
     ImageIcon icono = new ImageIcon(portada);
     icon.setIcon(icono);
     icon.addActionListener(new ActionListener() {
-
+        int contador=0;
         @Override
         public void actionPerformed(ActionEvent ae) {
-            System.out.println("boton de la matriz "+icon.getName());
+            
+            contador++;
+            System.out.println("boton de la matriz "+icon.getName()+" conteo "+contador);
             System.out.println("    estructura: "+estructura);
-            try{ 
-            if(estructura==0){
-                int cola = lista.buscaridCola();
-                System.out.println("    cola: "+cola);
-                Personaje nodoaux = lista.DarObjetoCola();
-                r.darPersonaje(nombrex, nombrey, nodoaux);
-                ImageIcon icono = new ImageIcon();
-                if(nodoaux.PathImagen!=null){
-                    icono = new ImageIcon(nodoaux.PathImagen);
-                }
-                else{
-                    icono = new ImageIcon(portada);
-                }
-                icon.setIcon(icono);
-                lista.delete(cola);
-                objeto.getComponentCount();
-                objeto.remove(0);
-                objeto.repaint();
-                objeto.updateUI();
-                System.out.println("    cola: "+cola);
+  
+            try{
+            if((contador % 2)!=0)
+            {
+                
+                        if(estructura==0){
+                            int cola = lista.buscaridCola();
+                            System.out.println("    cola: "+cola);
+                            Personaje nodoaux = lista.DarObjetoCola();
+                            r.darPersonaje(nombrey, nombrex, nodoaux);
+                            ImageIcon icono = new ImageIcon();
+               
+                            if(nodoaux.PathImagen!=null){
+                                icono = new ImageIcon(nodoaux.PathImagen);
+                            }
+                            else{
+                                icono = new ImageIcon(portada);
+                            }
+                            icon.setIcon(icono);
+                            lista.delete(cola);
+                            objeto.getComponentCount();
+                            objeto.remove(0);
+                            objeto.repaint();
+                            objeto.updateUI();
+                            System.out.println("    cola: "+cola);
 
-        }
-            if(estructura==1){
-                int pila = lista.buscaridPila();
-                System.out.println("    pila: "+pila);
-                Personaje nodoaux = lista.DarObjetoPila();
-                r.darPersonaje(nombrex, nombrey, nodoaux);
-                ImageIcon icono = new ImageIcon(nodoaux.PathImagen);
-                icon.setIcon(icono);
-                lista.delete(pila);
-                objeto.remove(0);
-                objeto.repaint();
-                objeto.updateUI();
-                System.out.println("    pila: "+pila);
+                        }
+                        if(estructura==1){
+                            int pila = lista.buscaridPila();
+                            System.out.println("    pila: "+pila);
+                            Personaje nodoaux = lista.DarObjetoPila();
+                            r.darPersonaje(nombrey, nombrex, nodoaux);
+                            ImageIcon icono = new ImageIcon(nodoaux.PathImagen);
+                            icon.setIcon(icono);
+                            lista.delete(pila);
+                            objeto.remove(0);
+                            objeto.repaint();
+                            objeto.updateUI();
+                            System.out.println("    pila: "+pila);
+                        }
+                
+                lista.imprimirlista();
+            }   
+            else{
+                
+                      if(estructura==0){
+                            Personaje auxobjeto = r.getPersonaje(nombrey, nombrex);
+                            if((auxobjeto.dato!=0)){
+                            lista.baja(auxobjeto);
+                            ImageIcon icono = new ImageIcon(portada);
+                            icon.setIcon(icono);
+                            Personaje auxpersonaje = new Personaje(0,"","",0,"");
+                            r.darPersonaje(nombrey, nombrex, auxpersonaje);
+                            JButton botoncola = new JButton();
+                            botoncola.setSize(75, 75);
+                            ImageIcon bcola = new ImageIcon(auxobjeto.PathImagen);
+                            botoncola.setIcon(bcola);
+                            objeto.add(botoncola, 0);
+                            objeto.repaint();
+                            objeto.updateUI();
+                            lista.imprimirlista();
+                            }
+                        }
+                      if(estructura==1){
+                            Personaje auxobjeto = r.getPersonaje(nombrey, nombrex);
+                            if(auxobjeto.dato!=0){
+                            lista.alta(auxobjeto);
+                            System.out.println("    auxobjeto: "+auxobjeto.nombre);
+                            ImageIcon icono = new ImageIcon(portada);
+                            icon.setIcon(icono);
+                            Personaje auxpersonaje = new Personaje(0,"","",0,"");
+                            r.darPersonaje(nombrey, nombrex, auxpersonaje);
+                            JButton botonpila = new JButton();
+                            botonpila.setSize(75,75);
+                            ImageIcon bpila = new ImageIcon(auxobjeto.PathImagen);
+                            botonpila.setIcon(bpila);
+                            objeto.add(botonpila,0);
+                            objeto.repaint();
+                            objeto.updateUI();
+                            lista.imprimirlista();
+                            }
+                      }
+            
             }
+                
+            
             }catch(Exception ex){
             }
-    
+
         }
     });
     icon.setBounds(x, y, 75, 75);
