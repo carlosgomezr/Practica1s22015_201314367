@@ -200,7 +200,25 @@ public class listasdobles {
         primero = null;
         ultimo = null;
     }
-      
+    
+    public int contarObjetos(String objeto){
+        int contar=0;
+        nodo actual=primero;
+        try{
+        while(actual!=ultimo){
+            if((actual.personaje.tipo.compareTo(objeto))==0){
+                contar = contar+1;
+            }
+            actual = actual.next;
+        }
+        if(ultimo.personaje.tipo.compareTo(objeto)==0){
+            contar = contar+1;
+        }}
+        catch(Exception ex){
+        }
+        return contar;
+    }
+    
     public boolean delete(int num)
     {
         nodo anterior=null;

@@ -24,6 +24,9 @@ public class Make extends javax.swing.JFrame {
     public static int horiginal=0;
     public static int voriginal=315;
     public static int rr=0;
+    public static int tamfila=2;
+    public static int tamcolumna=4;
+    public static Raiz matriz = new Raiz();
     private JPanel jPanel0;
     private JScrollPane scroll;
     private JPanel jPanel1;
@@ -87,7 +90,7 @@ public class Make extends javax.swing.JFrame {
         
         jPanel1.updateUI();
         jPanel0.updateUI();
-        for(int x=0; x<9;x++){
+        for(int x=0; x<tamcolumna;x++){
             int posx=x*75+50;
             int posy=0;
             Portada nuevo = new Portada();
@@ -95,7 +98,7 @@ public class Make extends javax.swing.JFrame {
         }
         
         
-        for(int y=0; y<6;y++){
+        for(int y=0; y<tamfila;y++){
             int posx=0;
             int posy=345-y*75;
             Portada nuevo = new Portada();
@@ -103,18 +106,18 @@ public class Make extends javax.swing.JFrame {
         }
     
         
-        Raiz matriz = new Raiz();
+
         matriz.insertarFila(-1);
         matriz.insertarColumna(-1);
         System.out.println("MATRIZ ORTOGONAL--------");
-        for(int x = 0; x<9;x++){
-            for(int y=0; y<5;y++){
+        for(int x = 0; x<tamcolumna;x++){
+            for(int y=0; y<tamfila;y++){
                 matriz.insertar(matriz, 0, x, y);
             }
         }
         
-        for(int x = 0; x<9; x++){
-            for(int y = 0;y<5;y++){
+        for(int x = 0; x<tamcolumna; x++){
+            for(int y = 0;y<tamfila;y++){
                 Portada nuevo = new Portada();
                 int posx= x*75+20;
                 int posy= 315-y*75;
@@ -154,6 +157,9 @@ public class Make extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -174,7 +180,7 @@ public class Make extends javax.swing.JFrame {
 
         jLabel5.setText("X:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 100, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 110, -1));
 
         jLabel6.setText("Y:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, -1, -1));
@@ -184,7 +190,7 @@ public class Make extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, 100, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, 110, -1));
 
         jButton1.setText("AGREGAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -192,15 +198,15 @@ public class Make extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 160, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
 
-        jButton2.setText("ELIMINAR");
+        jButton2.setText("RESUMEN");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
 
         jButton3.setText("ADD X");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -231,6 +237,20 @@ public class Make extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 620));
 
+        jMenu1.setText("GRAFICAR");
+
+        jMenuItem1.setText("GRAFICAR ORTOGONAL");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -241,12 +261,48 @@ public class Make extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        tamcolumna = tamcolumna+1;
+        System.out.println("TAMAÑO COLUMNA "+tamcolumna);
+     
+        for(int i=0;i<tamfila;i++){
+            matriz.insertar(matriz, 0, tamcolumna, i);
+        }
+        int auxposx=0;
+        int auxposy=0;
+     //CREACION DE LA MATRIZ DE BOTONES
+         for(int x = 0; x<tamcolumna; x++){
+            for(int y = 0;y<tamfila;y++){
+                 auxposx= x*75+20;
+                 auxposy= 315-y*75;
+              //  System.out.println("set Bounds: "+posx+","+posy);
+              //  nuevo.crearMatriz(jPanel1,jPanel0,"cielo.png", posx, posy,x,y,lista,estructura,matriz);
+            }
+        }
+         for(int  y =0;y<tamfila;y++){
+             Portada nuevo = new Portada();
+             int posy = 315-y*75;
+             nuevo.crearMatriz(jPanel1, jPanel0, "cielo.png",auxposx, posy, tamcolumna, y, lista, estructura, matriz);
+             System.out.println("   setBounds y "+posy);
+         }
+        System.out.println("    setBounds x "+auxposx);
+        for(int x=0; x<tamcolumna;x++){
+            int posx=x*75+50;
+            int posy=0;
+            Portada nuevo = new Portada();
+            nuevo.crearLabel(jPanel0, x, posx, posy);
+        }
+        
+        
+        for(int y=0; y<tamfila;y++){
+            int posx=0;
+            int posy=345-y*75;
+            Portada nuevo = new Portada();
+            nuevo.crearLabel(jPanel0, y, posx, posy);
+        }
+        jPanel0.repaint();
+        jPanel0.updateUI();
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     try{
@@ -287,7 +343,23 @@ public class Make extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        int personaje = lista.contarObjetos("personaje");
+        int hongo = lista.contarObjetos("hongo");
+        int ficha = lista.contarObjetos("ficha");
+        int monstruo = lista.contarObjetos("monstruo");
+        int pared = lista.contarObjetos("pared");
+        int suelo = lista.contarObjetos("suelo");
+        int tortuga = lista.contarObjetos("tortuga");
+        int castillo = lista.contarObjetos("castillo");
+        JOptionPane.showMessageDialog(this,"RESUMEN: \n"
+                + "\n Personaje: "+personaje
+                + "\n Hongos: "+hongo
+                + "\n Fichas: "+ficha
+                + "\n Goombas: "+monstruo 
+                + "\n Paredes: "+pared
+                + "\n Suelos: "+suelo
+                + "\n Tortugas: "+tortuga
+                + "\n Castillos: "+castillo);
         /*       
         try{
             int auxX;
@@ -316,6 +388,18 @@ public class Make extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+     matriz.columna.graphMatriz(matriz.fila.ultimo, matriz.columna.ultimo);   
+       Funcion fun = new Funcion();
+       fun.generar("Matriz Ortogonal Tablero");
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,6 +451,9 @@ public class Make extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

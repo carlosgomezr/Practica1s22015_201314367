@@ -125,10 +125,9 @@ String ruta = "C:\\Users\\estua_000\\Documents\\NetBeansProjects\\MarioMaker\\sr
             pw.write("label= \"LISTA DOBLE  PERSONAJES\"");
             pw.write("node [shape=record];\n");
 	    pw.write("subgraph g { \n "); 
-            if(lista!=null){
-                if(lista==null){
-                }
-                else{
+            if(lista.primero!=null){
+                
+         
                     if(aux.primero.next!=null){
                         while(aux.primero.next!=null){
                             pw.write("node"+aux.primero.personaje.dato+"[label=\" id: "+aux.primero.personaje.dato+" nombre: "+aux.primero.personaje.nombre +" tipo: "+aux.primero.personaje.tipo+" \"];\n");
@@ -141,7 +140,10 @@ String ruta = "C:\\Users\\estua_000\\Documents\\NetBeansProjects\\MarioMaker\\sr
                     else{
                         pw.write("node"+aux.primero.personaje.dato+"[label=\" id: "+aux.primero.personaje.dato+" nombre: "+aux.primero.personaje.nombre+" tipo: "+aux.primero.personaje.tipo+" \"];\n");     
                     }
-                }
+                
+            }
+            else{
+                    System.out.println("    lista vacia xd ");
             }
             pw.write("}\n");
 	    pw.write("}\n");

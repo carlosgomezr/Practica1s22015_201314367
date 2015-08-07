@@ -64,11 +64,13 @@ public class ListaOrto {
             actual = actual.derecha;
             while (actual != null)
             {
+               // auxiliar = auxiliar +"subgraph clusterf"+actual.fila+"c"+actual.columna+"{";
                 if(actual.derecha!=null){
                     auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"[label=\" \n id: "+actual.a+" \n nombre: "+actual.personaje.nombre +" \n tipo: "+actual.personaje.tipo+" \"];\n";
                     auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"[label=\" \n id: "+actual.derecha.a+" \n nombre: "+actual.derecha.personaje.nombre +" \n tipo: "+actual.derecha.personaje.tipo+" \"];\n";
                     auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"->nodef"+actual.fila+"c"+actual.columna+";\n";
                     auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"->nodef"+actual.derecha.fila+"c"+actual.derecha.columna+";\n";
+                    auxiliar = auxiliar+ "{rank=same; "+"nodef"+actual.fila+"c"+actual.columna+" nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"}";
                 }
                 else{
                       auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"[label=\" \n id: "+actual.a+" \n nombre: "+actual.personaje.nombre +" \n tipo: "+actual.personaje.tipo+" \"];\n";
@@ -78,10 +80,12 @@ public class ListaOrto {
 
                 }
                 if(actual.abajo!=null){
-       //             auxiliar = auxiliar+ "nodef"+actual.abajo.fila+"c"+actual.abajo.columna+"->nodef"+actual.fila+"c"+actual.columna+";\n";
-         //           auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"->nodef"+actual.abajo.fila+"c"+actual.abajo.columna+";\n";
+                   auxiliar = auxiliar+ "nodef"+actual.abajo.fila+"c"+actual.abajo.columna+"->nodef"+actual.fila+"c"+actual.columna+";\n";
+                   auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"->nodef"+actual.abajo.fila+"c"+actual.abajo.columna+";\n";
+//                   auxiliar = auxiliar+ "{rank=same; "+"nodef"+actual.fila+"c"+actual.columna+" nodef"+actual.abajo.fila+"c"+actual.abajo.columna+"}";
                 
                 }
+                //auxiliar = auxiliar + "}"; 
                 actual = actual.derecha;
             }
             
@@ -163,16 +167,20 @@ public class ListaOrto {
 	    BufferedWriter bw = new BufferedWriter(escribir);
 	    PrintWriter pw = new PrintWriter(bw);
             pw.write("digraph grafica { \n");
-            pw.write("label= \"MATRIZ ORTOGONAL\"");
+           // pw.write(" compound=true; \n");
+            pw.write(" rankdir=TB; \n");
+            pw.write(" label= \"MATRIZ ORTOGONAL XD lol\" ");
+            //pw.write(" rank=same \n");
+            pw.write(" nodesep=0.5 ");
             pw.write("node [shape=record];\n");
-  //          pw.write("rankdir=LR;\n");
-  //        pw.write("rank=same");
-	    pw.write("subgraph g{ \n "); 
+            
+      	    pw.write("subgraph g{ \n "); 
             pw.write(auxfila);
             pw.write("}\n");
-            pw.write("randir=TB; \n");
+            
+            pw.write(" rank=same ");
             pw.write("subgraph d{ \n ");
-            pw.write(auxcolumna);
+            //pw.write(auxcolumna);
             pw.write("}\n");
 	    pw.write("}\n");
 	    pw.close();

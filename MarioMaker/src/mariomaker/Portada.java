@@ -160,9 +160,12 @@ public class Portada {
     String name = nombrex+","+nombrey;
     icon.setName(name);
     
+    Personaje creo = r.getPersonaje(nombrey, nombrex);
     
-    ImageIcon icono = new ImageIcon(portada);
-    icon.setIcon(icono);
+  
+            ImageIcon icono = new ImageIcon(portada);
+            icon.setIcon(icono);
+    
     icon.addActionListener(new ActionListener() {
         int contador=0;
         @Override
@@ -222,7 +225,7 @@ public class Portada {
                             lista.baja(auxobjeto);
                             ImageIcon icono = new ImageIcon(portada);
                             icon.setIcon(icono);
-                            Personaje auxpersonaje = new Personaje(0,"","",0,"");
+                            Personaje auxpersonaje = new Personaje(0,"vacio","vacio.txt",0,"vacio");
                             r.darPersonaje(nombrey, nombrex, auxpersonaje);
                             JButton botoncola = new JButton();
                             botoncola.setSize(75, 75);
@@ -241,7 +244,7 @@ public class Portada {
                             System.out.println("    auxobjeto: "+auxobjeto.nombre);
                             ImageIcon icono = new ImageIcon(portada);
                             icon.setIcon(icono);
-                            Personaje auxpersonaje = new Personaje(0,"","",0,"");
+                            Personaje auxpersonaje = new Personaje(0,"vacio","vacio.txt",0,"vacio");
                             r.darPersonaje(nombrey, nombrex, auxpersonaje);
                             JButton botonpila = new JButton();
                             botonpila.setSize(75,75);
