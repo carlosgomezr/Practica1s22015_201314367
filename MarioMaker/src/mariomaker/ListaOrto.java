@@ -77,6 +77,11 @@ public class ListaOrto {
                     //auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"->nodef"+actual.derecha.fila+"c"+actual.derecha.columna+";\n";
 
                 }
+                if(actual.abajo!=null){
+       //             auxiliar = auxiliar+ "nodef"+actual.abajo.fila+"c"+actual.abajo.columna+"->nodef"+actual.fila+"c"+actual.columna+";\n";
+         //           auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"->nodef"+actual.abajo.fila+"c"+actual.abajo.columna+";\n";
+                
+                }
                 actual = actual.derecha;
             }
             
@@ -114,8 +119,8 @@ public class ListaOrto {
                     auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"->nodef"+actual.abajo.fila+"c"+actual.abajo.columna+";\n";
                 }
                 else{
-                      auxiliar = auxiliar+ "nodef"+actual.fila+"[label=\" \n f: "+actual.fila+" \"];\n";
-                      auxiliar = auxiliar+ "nodec"+actual.columna+"[label=\" \n c: "+actual.columna+" \"];\n";
+                    //  auxiliar = auxiliar+ "nodef"+actual.fila+"[label=\" \n f: "+actual.fila+" \"];\n";
+                    //  auxiliar = auxiliar+ "nodec"+actual.columna+"[label=\" \n c: "+actual.columna+" \"];\n";
                       auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"[label=\" \n id: "+actual.a+" \n nombre: "+actual.personaje.nombre +" \n tipo: "+actual.personaje.tipo+" \"];\n";
                     //auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"[label=\" id: "+actual.derecha.a+" nombre: "+actual.derecha.personaje.nombre +" tipo: "+actual.derecha.personaje.tipo+" \"];\n";
                     //auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"->nodef"+actual.fila+"c"+actual.columna+";\n";
@@ -160,13 +165,13 @@ public class ListaOrto {
             pw.write("digraph grafica { \n");
             pw.write("label= \"MATRIZ ORTOGONAL\"");
             pw.write("node [shape=record];\n");
-            pw.write("rankdir=TB;\n");
-            pw.write("rank=same");
-	    pw.write("subgraph g { \n "); 
+  //          pw.write("rankdir=LR;\n");
+  //        pw.write("rank=same");
+	    pw.write("subgraph g{ \n "); 
             pw.write(auxfila);
             pw.write("}\n");
-            pw.write("randir=LR; \n");
-            pw.write("subgraph d { \n ");
+            pw.write("randir=TB; \n");
+            pw.write("subgraph d{ \n ");
             pw.write(auxcolumna);
             pw.write("}\n");
 	    pw.write("}\n");

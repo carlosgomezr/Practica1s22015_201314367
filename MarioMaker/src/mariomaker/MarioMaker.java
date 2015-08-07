@@ -114,8 +114,10 @@ ntln(r.buscarcolumna(7));
            }
        }
        System.out.println("vamos come on");
-       Personaje prueba = new Personaje(10,"prueba","prueba.txt",100,"heroe");
+       Personaje prueba = new Personaje(10,"kaya","prueba.txt",100,"heroe");
        r.darPersonaje(2,1, prueba);
+      // r.buscarnodo(2, 1);
+       r.getPersonaje(2, 1);
        //r.darPersonaje(3,1, prueba);
        //System.out.println(" dar personaje a un nodo de la orto");
        r.fila.reportarFila();

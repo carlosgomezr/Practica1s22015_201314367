@@ -26,7 +26,7 @@ public class listasdobles {
  
     public listasdobles alta(Personaje dat)
     {
-        if(estavacio())
+        if((primero==null))
         {
             nodo nuevo=new nodo(dat);
             primero=nuevo;
@@ -44,7 +44,7 @@ public class listasdobles {
 
     public listasdobles baja(Personaje dat)
     {
-        if(estavacio())
+        if((primero==null))
         {
             nodo nuevo=new nodo(dat);
             primero=nuevo;
@@ -205,6 +205,8 @@ public class listasdobles {
     {
         nodo anterior=null;
         nodo actual=primero;
+        
+       
         while(actual!=ultimo)
         {
             if(actual.personaje.dato==num)
@@ -225,9 +227,15 @@ public class listasdobles {
             anterior=actual;
             actual=actual.next;
         }
+       
         if(num==ultimo.personaje.dato)
         {
-            ultimo=actual.ant;
+             if(primero==ultimo){
+                primero = ultimo = null;
+            }
+             else{
+                ultimo=actual.ant;
+             }
             return true;
         }
         return false;

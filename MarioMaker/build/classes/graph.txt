@@ -1,20 +1,19 @@
 digraph grafica { 
 label= "MATRIZ ORTOGONAL"node [shape=record];
-rankdir=TB;
-rank=samesubgraph g { 
+subgraph g{ 
  nodef2c0[label=" 
  id: 0 
  nombre: vacio 
  tipo: vacio "];
 nodef2c1[label=" 
  id: 0 
- nombre: prueba 
+ nombre: kaya 
  tipo: heroe "];
 nodef2c1->nodef2c0;
 nodef2c0->nodef2c1;
 nodef2c1[label=" 
  id: 0 
- nombre: prueba 
+ nombre: kaya 
  tipo: heroe "];
 nodef2c2[label=" 
  id: 0 
@@ -75,8 +74,8 @@ nodef0c2[label="
  nombre: vacio 
  tipo: vacio "];
 }
-randir=LR; 
-subgraph d { 
+randir=TB; 
+subgraph d{ 
  nodef0c2[label=" 
  id: 0 
  nombre: vacio 
@@ -97,10 +96,6 @@ nodef2c2[label="
  tipo: vacio "];
 nodef2c2->nodef1c2;
 nodef1c2->nodef2c2;
-nodef2[label=" 
- f: 2 "];
-nodec2[label=" 
- c: 2 "];
 nodef2c2[label=" 
  id: 0 
  nombre: vacio 
@@ -121,17 +116,13 @@ nodef1c1[label="
  tipo: vacio "];
 nodef2c1[label=" 
  id: 0 
- nombre: prueba 
+ nombre: kaya 
  tipo: heroe "];
 nodef2c1->nodef1c1;
 nodef1c1->nodef2c1;
-nodef2[label=" 
- f: 2 "];
-nodec1[label=" 
- c: 1 "];
 nodef2c1[label=" 
  id: 0 
- nombre: prueba 
+ nombre: kaya 
  tipo: heroe "];
 nodef0c0[label=" 
  id: 0 
@@ -153,10 +144,6 @@ nodef2c0[label="
  tipo: vacio "];
 nodef2c0->nodef1c0;
 nodef1c0->nodef2c0;
-nodef2[label=" 
- f: 2 "];
-nodec0[label=" 
- c: 0 "];
 nodef2c0[label=" 
  id: 0 
  nombre: vacio 

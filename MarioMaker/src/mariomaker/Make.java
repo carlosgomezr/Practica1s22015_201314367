@@ -118,7 +118,7 @@ public class Make extends javax.swing.JFrame {
                 Portada nuevo = new Portada();
                 int posx= x*75+20;
                 int posy= 315-y*75;
-                System.out.println("set Bounds: "+posx+","+posy);
+              //  System.out.println("set Bounds: "+posx+","+posy);
                 nuevo.crearMatriz(jPanel1,jPanel0,"cielo.png", posx, posy,x,y,lista,estructura,matriz);
             }
         }
@@ -240,36 +240,6 @@ public class Make extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    try{
-        int auxX;
-        String posx= jTextField1.getText();
-        auxX = Integer.parseInt(posx);
-        
-        int auxY;
-        String posy= jTextField2.getText();
-        auxY = Integer.parseInt(posy);
-        
-        if(estructura==0){
-            Personaje nodoaux = auxiliar.buscarXY(auxX, auxY);
-            lista.baja(nodoaux);
-            auxiliar.delete(nodoaux.dato);
-        }
-        if(estructura==1){
-            Personaje nodoaux = auxiliar.buscarXY(auxX, auxY);
-            lista.alta(nodoaux);
-            auxiliar.delete(nodoaux.dato);
-        }
-      
-    }
-    catch(Exception ex){
-    
-    }    
-
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -315,6 +285,37 @@ public class Make extends javax.swing.JFrame {
     }    
     // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        /*       
+        try{
+            int auxX;
+            String posx= jTextField1.getText();
+            auxX = Integer.parseInt(posx);
+
+            int auxY;
+            String posy= jTextField2.getText();
+            auxY = Integer.parseInt(posy);
+
+            if(estructura==0){
+                Personaje nodoaux = auxiliar.buscarXY(auxX, auxY);
+                lista.baja(nodoaux);
+                auxiliar.delete(nodoaux.dato);
+            }
+            if(estructura==1){
+                Personaje nodoaux = auxiliar.buscarXY(auxX, auxY);
+                lista.alta(nodoaux);
+                auxiliar.delete(nodoaux.dato);
+            }
+
+        }
+        catch(Exception ex){
+
+        }*/
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
