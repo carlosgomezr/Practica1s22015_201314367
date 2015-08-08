@@ -217,6 +217,11 @@ public class Make extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, 80, -1));
 
         jButton4.setText("ADD Y");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 360, 80, -1));
 
         jLabel9.setText("X:");
@@ -274,8 +279,7 @@ public class Make extends javax.swing.JFrame {
             for(int y = 0;y<tamfila;y++){
                  auxposx= x*75+20;
                  auxposy= 315-y*75;
-              //  System.out.println("set Bounds: "+posx+","+posy);
-              //  nuevo.crearMatriz(jPanel1,jPanel0,"cielo.png", posx, posy,x,y,lista,estructura,matriz);
+             
             }
         }
          for(int  y =0;y<tamfila;y++){
@@ -360,32 +364,7 @@ public class Make extends javax.swing.JFrame {
                 + "\n Suelos: "+suelo
                 + "\n Tortugas: "+tortuga
                 + "\n Castillos: "+castillo);
-        /*       
-        try{
-            int auxX;
-            String posx= jTextField1.getText();
-            auxX = Integer.parseInt(posx);
-
-            int auxY;
-            String posy= jTextField2.getText();
-            auxY = Integer.parseInt(posy);
-
-            if(estructura==0){
-                Personaje nodoaux = auxiliar.buscarXY(auxX, auxY);
-                lista.baja(nodoaux);
-                auxiliar.delete(nodoaux.dato);
-            }
-            if(estructura==1){
-                Personaje nodoaux = auxiliar.buscarXY(auxX, auxY);
-                lista.alta(nodoaux);
-                auxiliar.delete(nodoaux.dato);
-            }
-
-        }
-        catch(Exception ex){
-
-        }*/
-
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -400,6 +379,51 @@ public class Make extends javax.swing.JFrame {
         
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    tamfila = tamfila +1;
+    System.out.println("TAMAÑO FILA "+tamfila);
+     
+        for(int i=0;i<tamcolumna;i++){
+            matriz.insertar(matriz, 0, i, tamfila);
+        }
+        int auxposx=0;
+        int auxposy=0;
+     //CREACION DE LA MATRIZ DE BOTONES
+         for(int x = 0; x<tamcolumna; x++){
+            for(int y = 0;y<tamfila;y++){
+                 auxposx= x*75+20;
+                 auxposy= 315-y*75;
+             
+            }
+        }
+
+         for(int  x =0;x<tamcolumna;x++){
+             Portada nuevo = new Portada();
+             int posx = x*75+20;
+             nuevo.crearMatriz(jPanel1, jPanel0, "cielo.png",posx, auxposy, x, tamfila, lista, estructura, matriz);
+             System.out.println("   setBounds x "+posx);
+         }
+        
+         System.out.println("    setBounds y "+auxposy);
+        for(int x=0; x<tamcolumna;x++){
+            int posx=x*75+50;
+            int posy=0;
+            Portada nuevo = new Portada();
+            nuevo.crearLabel(jPanel0, x, posx, posy);
+        }
+        
+        
+        for(int y=0; y<tamfila;y++){
+            int posx=0;
+            int posy=345-y*75;
+            Portada nuevo = new Portada();
+            nuevo.crearLabel(jPanel0, y, posx, posy);
+        }
+        jPanel0.repaint();
+        jPanel0.updateUI();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

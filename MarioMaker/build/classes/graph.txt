@@ -2,17 +2,63 @@ digraph grafica {
  rankdir=TB; 
  label= "MATRIZ ORTOGONAL XD lol"  nodesep=0.5 node [shape=record];
 subgraph g{ 
- nodef1c0[label=" 
+ nodef3c0[label=" 
  id: 0 
  nombre: vacio 
  tipo: vacio "];
+nodef3c1[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio "];
+nodef3c1->nodef3c0;
+nodef3c0->nodef3c1;
+{rank=same; nodef3c0 nodef3c1}nodef3c1[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio "];
+nodef3c2[label=" 
+ id: 0 
+ nombre:  
+ tipo: personaje "];
+nodef3c2->nodef3c1;
+nodef3c1->nodef3c2;
+{rank=same; nodef3c1 nodef3c2}nodef3c2[label=" 
+ id: 0 
+ nombre:  
+ tipo: personaje "];
+nodef3c3[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio "];
+nodef3c3->nodef3c2;
+nodef3c2->nodef3c3;
+{rank=same; nodef3c2 nodef3c3}nodef3c3[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio "];
+nodef3c4[label=" 
+ id: 0 
+ nombre:  
+ tipo: hongo "];
+nodef3c4->nodef3c3;
+nodef3c3->nodef3c4;
+{rank=same; nodef3c3 nodef3c4}nodef3c4[label=" 
+ id: 0 
+ nombre:  
+ tipo: hongo "];
+nodef1c0[label=" 
+ id: 0 
+ nombre:  
+ tipo: monstruo "];
 nodef1c1[label=" 
  id: 0 
  nombre: vacio 
  tipo: vacio "];
 nodef1c1->nodef1c0;
 nodef1c0->nodef1c1;
-{rank=same; nodef1c0 nodef1c1}nodef1c1[label=" 
+{rank=same; nodef1c0 nodef1c1}nodef3c0->nodef1c0;
+nodef1c0->nodef3c0;
+nodef1c1[label=" 
  id: 0 
  nombre: vacio 
  tipo: vacio "];
@@ -22,7 +68,9 @@ nodef1c2[label="
  tipo: vacio "];
 nodef1c2->nodef1c1;
 nodef1c1->nodef1c2;
-{rank=same; nodef1c1 nodef1c2}nodef1c2[label=" 
+{rank=same; nodef1c1 nodef1c2}nodef3c1->nodef1c1;
+nodef1c1->nodef3c1;
+nodef1c2[label=" 
  id: 0 
  nombre: vacio 
  tipo: vacio "];
@@ -32,36 +80,40 @@ nodef1c3[label="
  tipo: vacio "];
 nodef1c3->nodef1c2;
 nodef1c2->nodef1c3;
-{rank=same; nodef1c2 nodef1c3}nodef1c3[label=" 
+{rank=same; nodef1c2 nodef1c3}nodef3c2->nodef1c2;
+nodef1c2->nodef3c2;
+nodef1c3[label=" 
  id: 0 
  nombre: vacio 
  tipo: vacio "];
 nodef1c5[label=" 
  id: 0 
- nombre:  
- tipo: ficha "];
+ nombre: vacio 
+ tipo: vacio "];
 nodef1c5->nodef1c3;
 nodef1c3->nodef1c5;
-{rank=same; nodef1c3 nodef1c5}nodef1c5[label=" 
+{rank=same; nodef1c3 nodef1c5}nodef3c3->nodef1c3;
+nodef1c3->nodef3c3;
+nodef1c5[label=" 
  id: 0 
- nombre:  
- tipo: ficha "];
+ nombre: vacio 
+ tipo: vacio "];
 nodef0c0[label=" 
  id: 0 
  nombre: vacio 
  tipo: vacio "];
 nodef0c1[label=" 
  id: 0 
- nombre: vacio 
- tipo: vacio "];
+ nombre:  
+ tipo: ficha "];
 nodef0c1->nodef0c0;
 nodef0c0->nodef0c1;
 {rank=same; nodef0c0 nodef0c1}nodef1c0->nodef0c0;
 nodef0c0->nodef1c0;
 nodef0c1[label=" 
  id: 0 
- nombre: vacio 
- tipo: vacio "];
+ nombre:  
+ tipo: ficha "];
 nodef0c2[label=" 
  id: 0 
  nombre: vacio 
@@ -88,16 +140,16 @@ nodef0c3[label="
  tipo: vacio "];
 nodef0c5[label=" 
  id: 0 
- nombre:  
- tipo: personaje "];
+ nombre: vacio 
+ tipo: vacio "];
 nodef0c5->nodef0c3;
 nodef0c3->nodef0c5;
 {rank=same; nodef0c3 nodef0c5}nodef1c3->nodef0c3;
 nodef0c3->nodef1c3;
 nodef0c5[label=" 
  id: 0 
- nombre:  
- tipo: personaje "];
+ nombre: vacio 
+ tipo: vacio "];
 nodef1c5->nodef0c5;
 nodef0c5->nodef1c5;
 }
