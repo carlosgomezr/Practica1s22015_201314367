@@ -22,22 +22,25 @@ import javax.swing.JTextField;
  */
 public class Portada {
     
-    public void crear(listasdobles lista,JPanel panel, String album, String portada, int id,int mario, int castillo,JButton bmario, JButton bcastillo){
+    public void crear(listasdobles lista,JPanel panel, String album, String portada, int id,int mario, int castillo,JButton bmario, JButton bcastillo,int posy){
    album = album + " ";     
    JLabel numero = new JLabel("No. "+id);
    numero.setVisible(true);
-   numero.setSize(100,100);
+   numero.setBounds(10, posy, 25, 50);
+  // numero.setSize(100,100);
    panel.add(numero);
    
    JLabel nombre = new JLabel(album);
     nombre.setVisible(true);
-    nombre.setSize(100,100);
+    nombre.setBounds(45, posy, 100, 50);
+    //nombre.setSize(100,100);
     panel.add(nombre);
     
     
     JButton icon = new javax.swing.JButton();
     icon.setVisible(true);
-    icon.setSize(75, 75);
+    icon.setBounds(155, posy, 75, 75);
+    //icon.setSize(75, 75);
     ImageIcon icono = new ImageIcon(portada);
     icon.setIcon(icono);
     
@@ -47,14 +50,16 @@ public class Portada {
     JTextField name = new javax.swing.JTextField();
     name.setVisible(true);
     name.setText("(cambiar nombre)");
-    name.setBounds(0, 0, 100, 60);
+    //name.setBounds(0,0,100,60);
+    name.setBounds(240, posy, 100, 60);
     panel.add(name);
     panel.validate();
     
     JButton modificar = new javax.swing.JButton();
     modificar.setVisible(true);
     modificar.setText("MODIFICAR");
-    modificar.setSize(100,50);
+    modificar.setBounds(350,posy,100,50);
+    //modificar.setSize(100,50);
     modificar.addActionListener(new ActionListener() {
 
        @Override
@@ -74,7 +79,8 @@ public class Portada {
     JButton eliminar = new javax.swing.JButton();
     eliminar.setVisible(true);
     eliminar.setText("ELIMINAR");
-    eliminar.setBounds(icon.getX(),icon.getY(), 100, 50);
+    eliminar.setBounds(460, posy, 100, 50);
+    //eliminar.setBounds(icon.getX(),icon.getY(), 100, 50);
     eliminar.addActionListener(new ActionListener() {
 
        @Override
@@ -136,7 +142,27 @@ public class Portada {
  boton2.setIcon(icon2);
  add(boton2);*/
     }
-     
+     public void eliminarT(JPanel panel,String name){
+     int contador=panel.getComponentCount();
+     String auxname="";
+     //String name =nombrex+","+nombrey;
+        for(int i=0;i<contador;i++){
+         try{   
+           auxname=panel.getComponent(i).getName();
+           System.out.println("setname: "+auxname);
+            if((auxname.compareTo(name)==0))
+           {
+                System.out.println("lo encontre");
+                panel.remove(i);
+                panel.repaint();
+                panel.updateUI();
+           }
+         }
+         catch(Exception ex){
+            
+            }
+     }
+   }
      
      public void crearImagen(JPanel panel,String portada,String name){
         
@@ -152,14 +178,29 @@ public class Portada {
     panel.add(icon);
     panel.validate();
     }
-     
+     public void crearPlay(JPanel objeto,int x,int y, int nombrex, int nombrey, Raiz matriz){
+        JLabel icon = new javax.swing.JLabel();
+        icon.setVisible(true);
+        icon.setSize(75,75);
+        String name = nombrex+","+nombrey;
+        icon.setName(name);
+        Personaje p = matriz.getPersonaje(nombrey, nombrex);
+        String imagen = p.PathImagen;
+        ImageIcon icono = new ImageIcon(imagen);
+        icon.setIcon(icono);
+        icon.setBounds(x, y, 75, 75);
+        objeto.setLayout(null);
+        objeto.add(icon);
+        objeto.repaint();
+        objeto.updateUI();
+     }
      
      public void crearMatriz(JPanel objeto,JPanel panel,String portada,int x,int y,int nombrex,int nombrey,listasdobles lista, int estructura, Raiz r){
     JButton icon = new javax.swing.JButton();
     icon.setVisible(true);
     String name = nombrex+","+nombrey;
     icon.setName(name);
-    
+   
     Personaje creo = r.getPersonaje(nombrey, nombrex);
     
   
@@ -279,14 +320,21 @@ public class Portada {
  add(boton2);*/
     }
      
-     public void crearLabel(JPanel panel,int nombre,int x,int y){
+     public void crearLabel(JPanel panel,String nombre,int x,int y,Raiz matriz){
     JLabel icon = new javax.swing.JLabel();
-    icon.setText(nombre+"");
+    String auxnombre="";
+if(y==0){
+    auxnombre = "c"+x;
+}
+else{
+    auxnombre = "f"+y;
+}
+    icon.setText(nombre);
     icon.setVisible(true);
-    String name = "label"+x+","+y;
+    String name = auxnombre;
     icon.setName(name);
     
-    icon.setBounds(x, y, 10, 10);
+    icon.setBounds(x, y, 15, 15);
     panel.setLayout(null);
     panel.add(icon);
     panel.validate();

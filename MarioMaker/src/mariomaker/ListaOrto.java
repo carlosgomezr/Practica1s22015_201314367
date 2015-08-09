@@ -66,14 +66,14 @@ public class ListaOrto {
             {
                // auxiliar = auxiliar +"subgraph clusterf"+actual.fila+"c"+actual.columna+"{";
                 if(actual.derecha!=null){
-                    auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"[label=\" \n id: "+actual.a+" \n nombre: "+actual.personaje.nombre +" \n tipo: "+actual.personaje.tipo+" \"];\n";
-                    auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"[label=\" \n id: "+actual.derecha.a+" \n nombre: "+actual.derecha.personaje.nombre +" \n tipo: "+actual.derecha.personaje.tipo+" \"];\n";
+                    auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"[label=\" \n id: "+actual.a+" \n nombre: "+actual.personaje.nombre +" \n tipo: "+actual.personaje.tipo+" \n f: "+actual.fila+" \n c: "+actual.columna+ " \"];\n";
+                    auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"[label=\" \n id: "+actual.derecha.a+" \n nombre: "+actual.derecha.personaje.nombre +" \n tipo: "+actual.derecha.personaje.tipo+" \n f: "+actual.derecha.fila+" \n c: "+actual.derecha.columna+" \"];\n";
                     auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"->nodef"+actual.fila+"c"+actual.columna+";\n";
                     auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"->nodef"+actual.derecha.fila+"c"+actual.derecha.columna+";\n";
                     auxiliar = auxiliar+ "{rank=same; "+"nodef"+actual.fila+"c"+actual.columna+" nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"}";
                 }
                 else{
-                      auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"[label=\" \n id: "+actual.a+" \n nombre: "+actual.personaje.nombre +" \n tipo: "+actual.personaje.tipo+" \"];\n";
+                      auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"[label=\" \n id: "+actual.a+" \n nombre: "+actual.personaje.nombre +" \n f: "+actual.fila+" \n cc: "+actual.columna+" \n tipo: "+actual.personaje.tipo+" \"];\n";
                     //auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"[label=\" id: "+actual.derecha.a+" nombre: "+actual.derecha.personaje.nombre +" tipo: "+actual.derecha.personaje.tipo+" \"];\n";
                     //auxiliar = auxiliar+ "nodef"+actual.derecha.fila+"c"+actual.derecha.columna+"->nodef"+actual.fila+"c"+actual.columna+";\n";
                     //auxiliar = auxiliar+ "nodef"+actual.fila+"c"+actual.columna+"->nodef"+actual.derecha.fila+"c"+actual.derecha.columna+";\n";
@@ -85,6 +85,7 @@ public class ListaOrto {
 //                   auxiliar = auxiliar+ "{rank=same; "+"nodef"+actual.fila+"c"+actual.columna+" nodef"+actual.abajo.fila+"c"+actual.abajo.columna+"}";
                 
                 }
+               
                 //auxiliar = auxiliar + "}"; 
                 actual = actual.derecha;
             }

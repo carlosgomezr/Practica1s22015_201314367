@@ -35,11 +35,13 @@ public class Ventana extends javax.swing.JFrame {
     private JScrollPane scroll;
     int contar=0;
     public Ventana() {
-        jPanel0 = new JPanel(new FlowLayout());
+        jPanel0 = new JPanel();
         //jPanel0.setLayout(new FlowLayout());
         // jPanel0.setLayout(new GridLayout(0,100));
-        //jPanel0.setLayout(new BoxLayout(jPanel0,BoxLayout.Y_AXIS));
+       // jPanel0.setLayout(new BoxLayout(jPanel0,BoxLayout.Y_AXIS));
+        
         jPanel0.setBounds(70,300,530,130);
+       
         add(jPanel0);
         scroll = new JScrollPane(jPanel0);
       //scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -387,12 +389,15 @@ public class Ventana extends javax.swing.JFrame {
         otra.imprimirlista();
         listasdobles auxiliar = otra;
         r = otra.tamaño();
+        int posx=0;
+        int posy=0;
         for(int i=1;i<r;i++){
         String nombre = auxiliar.buscarNombreInverso(i);
         String path = auxiliar.buscarPathInverso(i);
         int numeroid = auxiliar.buscaridInverso(i);
         Portada nueva = new Portada();
-        nueva.crear(otra,jPanel0,nombre,path,numeroid,mario,castillo,jButton2,jButton9);  
+        posy=i*120;
+        nueva.crear(otra,jPanel0,nombre,path,numeroid,mario,castillo,jButton2,jButton9,posy);  
         System.out.println("    este es mi primero "+otra.primero.personaje.nombre);
         System.out.println("    este es mi ultimo "+otra.ultimo.personaje.nombre);
         }   
@@ -444,12 +449,14 @@ public class Ventana extends javax.swing.JFrame {
         otra.imprimirlista();
         listasdobles auxiliar = otra;
         r = otra.tamaño();
+        int posy=0;
         for(int i=1;i<r;i++){
         String nombre = auxiliar.buscarNombreInverso(i);
         String path = auxiliar.buscarPathInverso(i);
         int numeroid = auxiliar.buscaridInverso(i);
         Portada nueva = new Portada();
-        nueva.crear(otra,jPanel0,nombre,path,numeroid,mario,castillo,jButton2,jButton9);  
+        posy = i*120;
+        nueva.crear(otra,jPanel0,nombre,path,numeroid,mario,castillo,jButton2,jButton9,posy);  
         }   
         }catch(Exception ex){
         

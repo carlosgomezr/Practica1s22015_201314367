@@ -39,8 +39,8 @@ public class Make extends javax.swing.JFrame {
     public static listasdobles auxiliar = lista;
     public Make() {
         
-        
-        jPanel0 = new JPanel(new GridBagLayout());
+        //new GridBagLayout()
+        jPanel0 = new JPanel();
         jPanel0.setBounds(20,200,695,405);
         add(jPanel0);
         scroll = new JScrollPane(jPanel0);
@@ -94,7 +94,8 @@ public class Make extends javax.swing.JFrame {
             int posx=x*75+50;
             int posy=0;
             Portada nuevo = new Portada();
-            nuevo.crearLabel(jPanel0, x, posx, posy);
+            String nombrex="c"+x;
+            nuevo.crearLabel(jPanel0, nombrex, posx, posy,matriz);
         }
         
         
@@ -102,7 +103,8 @@ public class Make extends javax.swing.JFrame {
             int posx=0;
             int posy=345-y*75;
             Portada nuevo = new Portada();
-            nuevo.crearLabel(jPanel0, y, posx, posy);
+            String nombrey="f"+y;
+            nuevo.crearLabel(jPanel0, nombrey, posx, posy,matriz);
         }
     
         
@@ -117,7 +119,7 @@ public class Make extends javax.swing.JFrame {
         }
         
         for(int x = 0; x<tamcolumna; x++){
-            for(int y = 0;y<tamfila;y++){
+            for(int y = 0;y<tamfila; y++){
                 Portada nuevo = new Portada();
                 int posx= x*75+20;
                 int posy= 315-y*75;
@@ -156,6 +158,7 @@ public class Make extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -208,35 +211,53 @@ public class Make extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
 
-        jButton3.setText("ADD X");
+        jButton3.setText("ADD COLUMNA");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, 80, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 310, 110, -1));
 
-        jButton4.setText("ADD Y");
+        jButton4.setText("ADD FILA");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 360, 80, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 110, -1));
 
-        jLabel9.setText("X:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, 40, -1));
+        jLabel9.setText("COLUMNA:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 430, 80, -1));
 
-        jLabel10.setText("Y:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 560, -1, -1));
+        jLabel10.setText("FILA:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, 50, -1));
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 120, -1));
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 560, 120, -1));
 
         jButton5.setText("ELIMINAR X");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 490, 120, -1));
 
         jButton6.setText("ELIMINAR Y");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 590, 120, -1));
+
+        jButton7.setText("PLAY!");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/world mario.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -267,10 +288,10 @@ public class Make extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         tamcolumna = tamcolumna+1;
+        int columna=tamcolumna-1;
         System.out.println("TAMAÑO COLUMNA "+tamcolumna);
-     
         for(int i=0;i<tamfila;i++){
-            matriz.insertar(matriz, 0, tamcolumna, i);
+            matriz.insertar(matriz, 0, columna, i);
         }
         int auxposx=0;
         int auxposy=0;
@@ -285,7 +306,7 @@ public class Make extends javax.swing.JFrame {
          for(int  y =0;y<tamfila;y++){
              Portada nuevo = new Portada();
              int posy = 315-y*75;
-             nuevo.crearMatriz(jPanel1, jPanel0, "cielo.png",auxposx, posy, tamcolumna, y, lista, estructura, matriz);
+             nuevo.crearMatriz(jPanel1, jPanel0, "cielo.png",auxposx, posy, columna, y, lista, estructura, matriz);
              System.out.println("   setBounds y "+posy);
          }
         System.out.println("    setBounds x "+auxposx);
@@ -293,7 +314,8 @@ public class Make extends javax.swing.JFrame {
             int posx=x*75+50;
             int posy=0;
             Portada nuevo = new Portada();
-            nuevo.crearLabel(jPanel0, x, posx, posy);
+            String nombrex = "c"+x;
+            nuevo.crearLabel(jPanel0, nombrex, posx, posy,matriz);
         }
         
         
@@ -301,10 +323,13 @@ public class Make extends javax.swing.JFrame {
             int posx=0;
             int posy=345-y*75;
             Portada nuevo = new Portada();
-            nuevo.crearLabel(jPanel0, y, posx, posy);
+            String nombrey = "f"+y;
+            nuevo.crearLabel(jPanel0, nombrey, posx, posy,matriz);
         }
         jPanel0.repaint();
         jPanel0.updateUI();
+        
+     
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -381,11 +406,12 @@ public class Make extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    tamfila = tamfila +1;
-    System.out.println("TAMAÑO FILA "+tamfila);
-     
+        tamfila = tamfila +1;
+        int fila = tamfila-1;
+        System.out.println("TAMAÑO FILA "+tamfila);
+ 
         for(int i=0;i<tamcolumna;i++){
-            matriz.insertar(matriz, 0, i, tamfila);
+            matriz.insertar(matriz, 0, i,fila);
         }
         int auxposx=0;
         int auxposy=0;
@@ -401,7 +427,7 @@ public class Make extends javax.swing.JFrame {
          for(int  x =0;x<tamcolumna;x++){
              Portada nuevo = new Portada();
              int posx = x*75+20;
-             nuevo.crearMatriz(jPanel1, jPanel0, "cielo.png",posx, auxposy, x, tamfila, lista, estructura, matriz);
+             nuevo.crearMatriz(jPanel1, jPanel0, "cielo.png",posx, auxposy, x, fila, lista, estructura, matriz);
              System.out.println("   setBounds x "+posx);
          }
         
@@ -410,7 +436,8 @@ public class Make extends javax.swing.JFrame {
             int posx=x*75+50;
             int posy=0;
             Portada nuevo = new Portada();
-            nuevo.crearLabel(jPanel0, x, posx, posy);
+            String nombrex="c"+x;
+            nuevo.crearLabel(jPanel0, nombrex, posx, posy,matriz);
         }
         
         
@@ -418,12 +445,82 @@ public class Make extends javax.swing.JFrame {
             int posx=0;
             int posy=345-y*75;
             Portada nuevo = new Portada();
-            nuevo.crearLabel(jPanel0, y, posx, posy);
+            String nombrey="f"+y;
+            nuevo.crearLabel(jPanel0, nombrey, posx, posy,matriz);
         }
         jPanel0.repaint();
         jPanel0.updateUI();
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        System.out.println("hice clic ");
+        Play p = new Play();
+        p.matriz=matriz;
+        p.tamfila=this.tamfila;
+        p.tamcolumna=this.tamcolumna;
+        System.out.println("el q mando tamfila "+this.tamfila);
+        System.out.println("el q mando tamcolumna "+this.tamcolumna);
+        this.setVisible(false);
+        p.setVisible(true);
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    String nombrexx=jTextField3.getText();
+    int nombrex = Integer.parseInt(nombrexx);
+    if(nombrex!=0){
+    try{    
+       
+       
+        for(int i=0;i<tamfila;i++){
+            String name = i+","+nombrexx;
+            Portada p = new Portada();
+            p.eliminarT(jPanel0,name);
+            
+        }
+        matriz.eliminarC(matriz.columna.ultimo,nombrex);
+        tamcolumna=tamcolumna-1;
+    }
+    catch(Exception ex){
+    
+    }
+    }
+    else{
+        JOptionPane.showMessageDialog(this,"COLUMNA NO VALIDA SELECCIONE OTRA XD");
+    }
+        
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    String nombreyy=jTextField4.getText();
+    int nombrey = Integer.parseInt(nombreyy);
+    if(nombrey!=0){
+    try{    
+       
+       
+        for(int i=0;i<tamcolumna;i++){
+            String name = i+","+nombreyy;
+            Portada p = new Portada();
+            p.eliminarT(jPanel0,name);
+            
+        }
+        matriz.eliminarF(matriz.fila.ultimo,nombrey);
+        tamfila=tamfila-1;
+    }
+    catch(Exception ex){
+    
+    }
+    }
+    else{
+        JOptionPane.showMessageDialog(this,"FILA NO VALIDA SELECCIONE OTRA XD");
+    }
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -467,6 +564,7 @@ public class Make extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     public static javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

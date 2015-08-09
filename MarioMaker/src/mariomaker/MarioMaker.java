@@ -122,6 +122,7 @@ ntln(r.buscarcolumna(7));
        //System.out.println(" dar personaje a un nodo de la orto");
        r.fila.reportarFila();
        r.columna.reportarColumna();
+       r.eliminarF(r.fila.ultimo,2);
        r.columna.graphMatriz(r.fila.ultimo, r.columna.ultimo);
      
       // r.changePersonaje(2, 1, prueba);

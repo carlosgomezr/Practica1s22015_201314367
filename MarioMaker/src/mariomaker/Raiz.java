@@ -253,6 +253,103 @@ public class Raiz {
         return t;
     }
     
+        public nodoorto buscarCabecera(nodoorto lista,int numero){
+        nodoorto q = lista;
+        nodoorto t=new nodoorto(-2,-2,-2);
+        int i = 1, band = 0;
+        while (q != null)
+        {
+            if (q.a == numero)
+            {
+                t = q;
+                band = 1;
+                return t;
+            }
+            q = q.ant;
+        }
+        return t;
+    }
+    
+        public void eliminarC(nodoorto lista,int numero){
+        nodoorto actual = buscarCabecera(lista, numero);
+        if(actual.next!=null){
+            actual = actual.abajo;
+            while (actual != null)
+            {
+                System.out.println("    actual = "+actual.a);
+                nodoorto aux = actual.izquierda;
+                aux.derecha = actual.derecha;
+                
+                nodoorto aux2 = actual.derecha;
+                aux2.izquierda = actual.izquierda;
+                
+                aux = aux2 = null;
+                
+                actual = actual.abajo;
+            }
+                actual = buscarCabecera(lista,numero);
+                nodoorto auxc = actual.ant;
+                auxc.next = actual.next;
+                nodoorto auxc2 = actual.next;
+                auxc2.ant = actual.ant;
+        }
+        if(actual.next==null){
+                System.out.println("    actual.next = null");
+                System.out.println("    actual = "+actual.a);
+                actual = actual.abajo;
+                while(actual!=null){
+                    nodoorto aux = actual.izquierda;
+                    aux.derecha = null;
+                    actual=actual.abajo;
+                }
+                    actual = buscarCabecera(lista,numero);
+                    nodoorto auxc = actual.ant;
+                    auxc.next = null;
+        }
+                
+        }
+        
+    
+        public void eliminarF(nodoorto lista,int numero){
+        nodoorto actual = buscarCabecera(lista, numero);
+        if(actual.next!=null){
+            actual = actual.derecha;
+            while (actual != null)
+            {
+                System.out.println("    actual = "+actual.a);
+                nodoorto aux = actual.arriba;
+                aux.abajo = actual.abajo;
+                
+                nodoorto aux2 = actual.abajo;
+                aux2.arriba = actual.arriba;
+                
+                aux = aux2 = null;
+                
+                actual = actual.derecha;
+            }
+                actual = buscarCabecera(lista,numero);
+                nodoorto auxc = actual.ant;
+                auxc.next = actual.next;
+                nodoorto auxc2 = actual.next;
+                auxc2.ant = actual.ant;
+        }
+        if(actual.next==null){
+                System.out.println("    actual.next = null");
+                System.out.println("    actual = "+actual.a);
+                actual = actual.derecha;
+                while(actual!=null){
+                    nodoorto aux = actual.arriba;
+                    aux.abajo = null;
+                    actual=actual.derecha;
+                }
+                    actual = buscarCabecera(lista,numero);
+                    nodoorto auxc = actual.ant;
+                    auxc.next = null;
+                    actual.derecha = null;
+                    
+        }
+                
+        }    
         
         
      public nodoorto buscarF(nodoorto lista,int numero){
