@@ -41,21 +41,21 @@ public class Make extends javax.swing.JFrame {
         
         //new GridBagLayout()
         jPanel0 = new JPanel();
-        jPanel0.setBounds(20,200,695,405);
+        jPanel0.setBounds(20,175,1020,430);
         add(jPanel0);
         scroll = new JScrollPane(jPanel0);
       //scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scroll.setBounds(20,200,695,405);
+        scroll.setBounds(20,175,1020,430);
         add(scroll);
         
         jPanel1 = new JPanel();
-        jPanel1.setBounds(20,40,700,120);
+        jPanel1.setBounds(20,40,1020,90);
         add(jPanel1);
         scroll1 = new JScrollPane(jPanel1);
       //scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scroll1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scroll1.setBounds(20,40,700,120);
+        scroll1.setBounds(20,40,1020,90);
         add(scroll1);
     
         System.out.println("-------PILA O COLA-----\n 0. cola \n 1. pila");
@@ -91,7 +91,7 @@ public class Make extends javax.swing.JFrame {
         jPanel1.updateUI();
         jPanel0.updateUI();
         for(int x=0; x<tamcolumna;x++){
-            int posx=x*75+50;
+            int posx=x*50+40;
             int posy=0;
             Portada nuevo = new Portada();
             String nombrex="c"+x;
@@ -101,7 +101,7 @@ public class Make extends javax.swing.JFrame {
         
         for(int y=0; y<tamfila;y++){
             int posx=0;
-            int posy=345-y*75;
+            int posy=340-y*50;
             Portada nuevo = new Portada();
             String nombrey="f"+y;
             nuevo.crearLabel(jPanel0, nombrey, posx, posy,matriz);
@@ -121,8 +121,8 @@ public class Make extends javax.swing.JFrame {
         for(int x = 0; x<tamcolumna; x++){
             for(int y = 0;y<tamfila; y++){
                 Portada nuevo = new Portada();
-                int posx= x*75+20;
-                int posy= 315-y*75;
+                int posx= x*50+20;
+                int posy= 340-y*50;
               //  System.out.println("set Bounds: "+posx+","+posy);
                 nuevo.crearMatriz(jPanel1,jPanel0,"cielo.png", posx, posy,x,y,lista,estructura,matriz);
             }
@@ -176,24 +176,24 @@ public class Make extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 11, 111, 29));
 
         jLabel3.setText("PERSONAJES:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 30, -1, -1));
 
         jLabel4.setText("TABLERO:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 270, -1, -1));
 
         jLabel5.setText("X:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 110, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 70, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 70, 110, -1));
 
         jLabel6.setText("Y:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 120, -1, -1));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, 110, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 120, 110, -1));
 
         jButton1.setText("AGREGAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +201,7 @@ public class Make extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 150, -1, -1));
 
         jButton2.setText("RESUMEN");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +209,7 @@ public class Make extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 220, -1, -1));
 
         jButton3.setText("ADD COLUMNA");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +217,7 @@ public class Make extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 310, 110, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 300, 110, -1));
 
         jButton4.setText("ADD FILA");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -225,15 +225,15 @@ public class Make extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 110, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 350, 110, -1));
 
         jLabel9.setText("COLUMNA:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 430, 80, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 420, 80, -1));
 
         jLabel10.setText("FILA:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, 50, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 120, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 560, 120, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 520, 50, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 450, 120, -1));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 550, 120, -1));
 
         jButton5.setText("ELIMINAR X");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -241,7 +241,7 @@ public class Make extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 490, 120, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 480, 120, -1));
 
         jButton6.setText("ELIMINAR Y");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -249,7 +249,7 @@ public class Make extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 590, 120, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 580, 120, -1));
 
         jButton7.setText("PLAY!");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -257,11 +257,11 @@ public class Make extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/world mario.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 620));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 620));
 
         jMenu1.setText("GRAFICAR");
 
@@ -298,20 +298,20 @@ public class Make extends javax.swing.JFrame {
      //CREACION DE LA MATRIZ DE BOTONES
          for(int x = 0; x<tamcolumna; x++){
             for(int y = 0;y<tamfila;y++){
-                 auxposx= x*75+20;
-                 auxposy= 315-y*75;
+                 auxposx= x*50+20;
+                 auxposy= 340-y*50;
              
             }
         }
          for(int  y =0;y<tamfila;y++){
              Portada nuevo = new Portada();
-             int posy = 315-y*75;
+             int posy = 340-y*50;
              nuevo.crearMatriz(jPanel1, jPanel0, "cielo.png",auxposx, posy, columna, y, lista, estructura, matriz);
              System.out.println("   setBounds y "+posy);
          }
         System.out.println("    setBounds x "+auxposx);
         for(int x=0; x<tamcolumna;x++){
-            int posx=x*75+50;
+            int posx=x*50+40;
             int posy=0;
             Portada nuevo = new Portada();
             String nombrex = "c"+x;
@@ -321,7 +321,7 @@ public class Make extends javax.swing.JFrame {
         
         for(int y=0; y<tamfila;y++){
             int posx=0;
-            int posy=345-y*75;
+            int posy=340-y*50;
             Portada nuevo = new Portada();
             String nombrey = "f"+y;
             nuevo.crearLabel(jPanel0, nombrey, posx, posy,matriz);
@@ -418,22 +418,22 @@ public class Make extends javax.swing.JFrame {
      //CREACION DE LA MATRIZ DE BOTONES
          for(int x = 0; x<tamcolumna; x++){
             for(int y = 0;y<tamfila;y++){
-                 auxposx= x*75+20;
-                 auxposy= 315-y*75;
+                 auxposx= x*50+20;
+                 auxposy= 340-y*50;
              
             }
         }
 
          for(int  x =0;x<tamcolumna;x++){
              Portada nuevo = new Portada();
-             int posx = x*75+20;
+             int posx = x*50+20;
              nuevo.crearMatriz(jPanel1, jPanel0, "cielo.png",posx, auxposy, x, fila, lista, estructura, matriz);
              System.out.println("   setBounds x "+posx);
          }
         
          System.out.println("    setBounds y "+auxposy);
         for(int x=0; x<tamcolumna;x++){
-            int posx=x*75+50;
+            int posx=x*50+40;
             int posy=0;
             Portada nuevo = new Portada();
             String nombrex="c"+x;
@@ -443,7 +443,7 @@ public class Make extends javax.swing.JFrame {
         
         for(int y=0; y<tamfila;y++){
             int posx=0;
-            int posy=345-y*75;
+            int posy=340-y*50;
             Portada nuevo = new Portada();
             String nombrey="f"+y;
             nuevo.crearLabel(jPanel0, nombrey, posx, posy,matriz);
@@ -476,7 +476,7 @@ public class Make extends javax.swing.JFrame {
        
        
         for(int i=0;i<tamfila;i++){
-            String name = i+","+nombrexx;
+            String name = nombrexx+","+i;
             Portada p = new Portada();
             p.eliminarT(jPanel0,name);
             

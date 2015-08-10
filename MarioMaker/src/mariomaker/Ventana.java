@@ -120,7 +120,7 @@ public class Ventana extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, 100));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 110, 100));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ficha.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {

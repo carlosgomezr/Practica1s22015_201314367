@@ -15,13 +15,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 
 /**
  *
  * @author Carlos Gomez
  */
-public class Portada {
-    
+public class Portada implements Runnable {
+    public JLabel mario;
     public void crear(listasdobles lista,JPanel panel, String album, String portada, int id,int mario, int castillo,JButton bmario, JButton bcastillo,int posy){
    album = album + " ";     
    JLabel numero = new JLabel("No. "+id);
@@ -178,6 +181,11 @@ public class Portada {
     panel.add(icon);
     panel.validate();
     }
+     
+     public JLabel heroe(JLabel icon){
+     
+         return mario;
+     }
      public void crearPlay(JPanel objeto,int x,int y, int nombrex, int nombrey, Raiz matriz){
         JLabel icon = new javax.swing.JLabel();
         icon.setVisible(true);
@@ -193,6 +201,23 @@ public class Portada {
         objeto.add(icon);
         objeto.repaint();
         objeto.updateUI();
+        Thread h = new Thread();
+        h.start();
+        if(p.tipo.compareTo("monstruo")==0){
+            System.out.println("ENCONTRE A MONSTRUO X3");
+            Figura monstruo = new Figura(icon,matriz,nombrey,nombrex);
+            monstruo.start();
+        }
+        if(p.tipo.compareTo("tortuga")==0){
+            System.out.println("ENCONTRE A TORTUGA X3");
+            Figura tortuga = new Figura(icon,matriz,nombrey,nombrex);
+            tortuga.start();
+        }
+        if(p.tipo.compareTo("personaje")==0){
+             System.out.println("ENCONTRE A MARIO X3");
+             mario = icon;
+            
+        }
      }
      
      public void crearMatriz(JPanel objeto,JPanel panel,String portada,int x,int y,int nombrex,int nombrey,listasdobles lista, int estructura, Raiz r){
@@ -263,16 +288,17 @@ public class Portada {
                       if(estructura==0){
                             Personaje auxobjeto = r.getPersonaje(nombrey, nombrex);
                             if((auxobjeto.dato!=0)){
-                            lista.baja(auxobjeto);
+                            lista.alta(auxobjeto);
                             ImageIcon icono = new ImageIcon(portada);
                             icon.setIcon(icono);
                             Personaje auxpersonaje = new Personaje(0,"vacio","vacio.txt",0,"vacio");
                             r.darPersonaje(nombrey, nombrex, auxpersonaje);
                             JButton botoncola = new JButton();
-                            botoncola.setSize(75, 75);
+                            botoncola.setSize(50, 50);
                             ImageIcon bcola = new ImageIcon(auxobjeto.PathImagen);
+                            System.out.println("path "+auxobjeto.PathImagen);
                             botoncola.setIcon(bcola);
-                            objeto.add(botoncola, 0);
+                            objeto.add(botoncola, objeto.getComponentCount());
                             objeto.repaint();
                             objeto.updateUI();
                             lista.imprimirlista();
@@ -288,7 +314,8 @@ public class Portada {
                             Personaje auxpersonaje = new Personaje(0,"vacio","vacio.txt",0,"vacio");
                             r.darPersonaje(nombrey, nombrex, auxpersonaje);
                             JButton botonpila = new JButton();
-                            botonpila.setSize(75,75);
+                            botonpila.setSize(50,50);
+                           
                             ImageIcon bpila = new ImageIcon(auxobjeto.PathImagen);
                             botonpila.setIcon(bpila);
                             objeto.add(botonpila,0);
@@ -297,7 +324,8 @@ public class Portada {
                             lista.imprimirlista();
                             }
                       }
-            
+                      objeto.repaint();
+                      objeto.updateUI();
             }
                 
             
@@ -306,7 +334,7 @@ public class Portada {
 
         }
     });
-    icon.setBounds(x, y, 75, 75);
+    icon.setBounds(x, y, 50, 50);
     panel.setLayout(null);
     
     panel.add(icon);
@@ -334,7 +362,7 @@ else{
     String name = auxnombre;
     icon.setName(name);
     
-    icon.setBounds(x, y, 15, 15);
+    icon.setBounds(x, y, 25, 25);
     panel.setLayout(null);
     panel.add(icon);
     panel.validate();
@@ -346,6 +374,11 @@ else{
  boton2.setIcon(icon2);
  add(boton2);*/
     }
-     
+
+    @Override
+    public void run() {
+    
+    }
+
   
 }

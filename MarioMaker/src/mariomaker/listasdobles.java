@@ -44,7 +44,7 @@ public class listasdobles {
 
     public listasdobles baja(Personaje dat)
     {
-        if((primero==null))
+        if((ultimo==null))
         {
             nodo nuevo=new nodo(dat);
             primero=nuevo;
@@ -53,9 +53,13 @@ public class listasdobles {
         else
         {
             nodo nuevo=new nodo(dat);
-            primero.ant=nuevo;
-			nuevo.next = primero;
-			primero = nuevo;
+            ultimo.next=nuevo;
+            nuevo.ant=ultimo;
+            ultimo=nuevo;
+            //nodo nuevo=new nodo(dat);
+            //primero.ant=nuevo;
+            //nuevo.next = primero;
+            //primero = nuevo;
         }
         return this;
     }

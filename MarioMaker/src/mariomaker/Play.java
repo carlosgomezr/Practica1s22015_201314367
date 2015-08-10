@@ -11,6 +11,8 @@ import static javafx.scene.paint.Color.SLATEBLUE;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.Container;
+import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
 /**
  *
  * @author Carlos Gomez
@@ -28,38 +30,40 @@ public class Play extends javax.swing.JFrame {
       int tamcolumna = Make.tamcolumna;
       private JPanel jPanel0;
       private JScrollPane scroll;
-      
+      public JLabel mario;
     public Play() {
          
-        this.getContentPane().setBackground(new java.awt.Color(95,124,244));
+       // this.getContentPane().setBackground(new java.awt.Color(95,124,244));
         jPanel0 = new JPanel();
-
-        jPanel0.setBounds(20,100,675,405);
-        jPanel0.setBackground(new java.awt.Color(95, 124, 244));
+        jPanel0.setBackground(new java.awt.Color(95,124,244));
+        jPanel0.setBounds(20,175,1000,410);
         add(jPanel0);
         scroll = new JScrollPane(jPanel0);
       //scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scroll.setBounds(20,200,675,405);
+        scroll.setBounds(20,175,1000,410);
         add(scroll);
+ 
 
         System.out.println("tamaño columna: "+tamcolumna);
         System.out.println("tamaño fila: "+tamfila);
         for(int x=0;x<tamcolumna;x++){
             for(int y=0;y<tamfila;y++){
                 Portada nuevo = new Portada();
-                int posx= x*75+20;
-                int posy= 315-y*75;
+                int posx= x*50;
+                int posy= 340-y*50;
                 nuevo.crearPlay(jPanel0, posx, posy, x, y, matriz);
                 System.out.println("setbounds  x: "+posx+" y: "+posy);
             }
         }
-        
+        Portada n = new Portada();
+        mario = n.mario;
         initComponents();
       
         h.start();
-       
         m.start();
+        
+        
         
     }
 
@@ -83,6 +87,11 @@ public class Play extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("jLabel1");
@@ -129,8 +138,9 @@ public class Play extends javax.swing.JFrame {
      
     }
     else{
-        h.run();
-        m.run();
+        h.resume();
+        m.resume();
+        
         
     }
 // TODO add your handling code here:
@@ -148,6 +158,18 @@ public class Play extends javax.swing.JFrame {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+    if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
+        mario.setLocation(mario.getX()+50, mario.getY());
+    }    
+    if(evt.getKeyCode()==KeyEvent.VK_LEFT){
+        mario.setLocation(mario.getX()-50, mario.getY());
+    }    
+    
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments
@@ -224,6 +246,7 @@ int contador1=-1;
     public void run(){
     while(true){
                 try {
+                    
                     contador2=contador2+1;
                     
                     jLabel1.setText(Integer.toString(contador2));
