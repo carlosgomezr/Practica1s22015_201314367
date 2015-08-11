@@ -24,12 +24,14 @@ public class Play extends javax.swing.JFrame implements KeyListener{
     /**
      * Creates new form Play
      */
+      ListaFigura ll = new ListaFigura();
       Hilo h = new Hilo();
       minutos m = new minutos();
       move g = new move();
       int pausa=0;
       Raiz matriz= Make.matriz;
       Raiz reini = Make.reinicio;
+      Raiz auxreini= new Raiz();
       int tamfila = Make.tamfila;
       int vida = 1;
       int movimiento=-1;
@@ -66,6 +68,7 @@ public class Play extends javax.swing.JFrame implements KeyListener{
             }
         }
         mario=nuevo.hero;
+        ll=nuevo.l;
         System.out.println("mario.getX() "+mario.getX());
         System.out.println("mario.getY() "+mario.getY());
         
@@ -119,6 +122,8 @@ notify();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jButton1.setText("jButton1");
 
@@ -194,6 +199,22 @@ notify();
         });
         jMenu2.add(jMenuItem3);
 
+        jMenuItem4.setText("Reiniciar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("jMenuItem5");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -242,7 +263,7 @@ notify();
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-       
+       System.out.println("REINICIO :v");
      
     // TODO add your handling code here:
     }//GEN-LAST:event_jMenu2ActionPerformed
@@ -251,6 +272,11 @@ notify();
          System.out.println("Pausa :v");
          h.suspend();
          m.suspend();
+         g.suspend();
+         int tamaño = ll.tamaño();
+         for(int i=1;i<=tamaño;i++){
+             ll.buscarFigura(i).f.suspend();
+         }
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -259,9 +285,54 @@ notify();
         System.out.println("estas vivo m o.o D: :v "+m.isAlive());
         h.resume();
         m.resume();
-        
+        g.resume();
+        int tamaño = ll.tamaño();
+         for(int i=1;i<=tamaño;i++){
+             ll.buscarFigura(i).f.resume();
+         }
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+         JOptionPane.showMessageDialog(this, "reinicio xD");
+         System.out.println("hice clic ");
+    
+    Portada nuevo=new Portada();
+    
+   
+     h.suspend();
+         m.suspend();
+         int tamaño = ll.tamaño();
+         for(int i=1;i<=tamaño;i++){
+             ll.buscarFigura(i).f.suspend();
+            
+        }
+    jPanel0.removeAll();
+    jPanel0.repaint();
+    jPanel0.updateUI();
+    
+    for(int x=0;x<tamcolumna;x++){
+            for(int y=0;y<tamfila;y++){
+        
+                int posx= x*50;
+                int posy= 340-y*50;
+                nuevo.crearPlay(jPanel0, posx, posy, x, y, matriz);
+                System.out.println("setbounds  x: "+posx+" y: "+posy);
+            }
+        }
+        mario=nuevo.hero;
+        auxreini = null;
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       reini.columna.graphMatriz(reini.fila.ultimo, reini.columna.ultimo);   
+       Funcion fun = new Funcion();
+       fun.generar("Matriz Ortogonal AUX XD");
+
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,6 +385,8 @@ notify();
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
 
 int contador1=-1;
@@ -414,6 +487,9 @@ int contador1=-1;
                         if((p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("tortuga")==0)){
                             vida = vida - 1;
                             jLabel7.setText(Integer.toString(vida));
+                            Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                            matriz.darPersonaje(fila, columna-1, vacio);
+                            
                         };
                         if((p.tipo.compareTo("castillo")==0)){
                                 JOptionPane.showMessageDialog(null, "   GANO X3 ");
@@ -456,6 +532,8 @@ int contador1=-1;
                                     if((p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("tortuga")==0)){
                                         vida = vida - 1;
                                         jLabel7.setText(Integer.toString(vida));
+                                        Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                        matriz.darPersonaje(fila, columna+1, vacio);
                                     };
                                     if((p.tipo.compareTo("castillo")==0)){
                                         JOptionPane.showMessageDialog(null, "   GANO X3 ");
@@ -520,6 +598,7 @@ int contador1=-1;
                         if((p.tipo.compareTo("pared")==0)|(p.tipo.compareTo("suelo")==0)){
                             movimiento=-1;
                         }
+                    
                         else{
                             otro=matriz.getPersonaje(fila+1, columna);
                             matriz.darPersonaje(fila,columna, otro);
@@ -528,6 +607,9 @@ int contador1=-1;
                             mario.setLocation(mario.getX(),mario.getY()+50);
                             matriz.darPersonaje(mario.getY(),mario.getX(), p);
                             movimiento=7;
+                            if(p.tipo.compareTo("castillo")==0){
+                                JOptionPane.showMessageDialog(null, " GANO X3");
+                            }
                             if(mario.getY()==340){
                                 JOptionPane.showMessageDialog(null,"Game Over :v");
                                 System.exit(0);

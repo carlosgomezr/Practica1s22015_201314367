@@ -28,6 +28,7 @@ public class Portada implements Runnable {
 JLabel hero;   
 int herox=0;
 int heroy=0;
+ListaFigura l = new ListaFigura();
 ImageIcon heroimage;
     public void crear(listasdobles lista,JPanel panel, String album, String portada, int id,int mario, int castillo,JButton bmario, JButton bcastillo,int posy){
    album = album + " ";     
@@ -207,12 +208,13 @@ ImageIcon heroimage;
         if(p.tipo.compareTo("monstruo")==0){
             System.out.println("ENCONTRE A MONSTRUO X3");
             Figura monstruo = new Figura(icon,matriz,nombrey,nombrex);
+            l.baja(monstruo);
             monstruo.start();
-            
         }
         if(p.tipo.compareTo("tortuga")==0){
             System.out.println("ENCONTRE A TORTUGA X3");
             Figura tortuga = new Figura(icon,matriz,nombrey,nombrex);
+            l.baja(tortuga);
             tortuga.start();
         }
         if(p.tipo.compareTo("ficha")==0){
