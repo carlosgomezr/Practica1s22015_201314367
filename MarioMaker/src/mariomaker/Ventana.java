@@ -104,6 +104,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mario.png"))); // NOI18N
@@ -271,6 +276,7 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    if(mario!=0){
     if(id!=1){
         estructura = 1;
         Make m = new Make();
@@ -284,6 +290,9 @@ public class Ventana extends javax.swing.JFrame {
     else{
           JOptionPane.showMessageDialog(rootPane,"-------POR FAVOR, AGREGUE PERSONAJES A SU LISTA------");
        
+    }  
+    }else{
+        JOptionPane.showMessageDialog(this,"ELIGE A MARIO PARA JUGAR XD");
     }
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -466,6 +475,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    if(mario!=0){
     if(id!=1){
         estructura = 0;
         Make m = new Make();
@@ -479,6 +489,8 @@ public class Ventana extends javax.swing.JFrame {
     else{
           JOptionPane.showMessageDialog(rootPane,"-------POR FAVOR, AGREGUE PERSONAJES A SU LISTA------");
        
+    }}else{
+          JOptionPane.showMessageDialog(this,"ELIGE A MARIO PARA JUGAR XD");
     }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -526,6 +538,13 @@ public class Ventana extends javax.swing.JFrame {
         
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if(evt.getKeyChar()=='a'){
+            System.out.println(" no estoy tan jodido ");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments

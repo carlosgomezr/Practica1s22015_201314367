@@ -12,25 +12,34 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.Container;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Carlos Gomez
  */
-public class Play extends javax.swing.JFrame {
+public class Play extends javax.swing.JFrame implements KeyListener{
 
     /**
      * Creates new form Play
      */
       Hilo h = new Hilo();
       minutos m = new minutos();
+      move g = new move();
       int pausa=0;
       Raiz matriz= Make.matriz;
+      Raiz reini = Make.reinicio;
       int tamfila = Make.tamfila;
+      int vida = 1;
+      int movimiento=-1;
+      int moneda =0;
       int tamcolumna = Make.tamcolumna;
       private JPanel jPanel0;
       private JScrollPane scroll;
       public JLabel mario;
+      private boolean paused = false;
+      private boolean stopped = false;
     public Play() {
          
        // this.getContentPane().setBackground(new java.awt.Color(95,124,244));
@@ -38,35 +47,55 @@ public class Play extends javax.swing.JFrame {
         jPanel0.setBackground(new java.awt.Color(95,124,244));
         jPanel0.setBounds(20,175,1000,410);
         add(jPanel0);
+        
         scroll = new JScrollPane(jPanel0);
       //scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scroll.setBounds(20,175,1000,410);
         add(scroll);
- 
-
+        Portada nuevo=new Portada();
         System.out.println("tamaño columna: "+tamcolumna);
         System.out.println("tamaño fila: "+tamfila);
         for(int x=0;x<tamcolumna;x++){
             for(int y=0;y<tamfila;y++){
-                Portada nuevo = new Portada();
+        
                 int posx= x*50;
                 int posy= 340-y*50;
                 nuevo.crearPlay(jPanel0, posx, posy, x, y, matriz);
                 System.out.println("setbounds  x: "+posx+" y: "+posy);
             }
         }
-        Portada n = new Portada();
-        mario = n.mario;
+        mario=nuevo.hero;
+        System.out.println("mario.getX() "+mario.getX());
+        System.out.println("mario.getY() "+mario.getY());
+        
         initComponents();
-      
+        String auxmoneda=Integer.toString(moneda);
+        String auxvida=Integer.toString(vida);
+        jLabel5.setText(auxmoneda);
+        jLabel7.setText(auxvida);
+        
         h.start();
         m.start();
-        
-        
+        g.start();
         
     }
+    
 
+public synchronized void pause() {
+paused = true;
+}
+
+public synchronized void resume() {
+paused = false;
+notify();
+}
+
+public synchronized void stop() {
+stopped = true;
+// If it was paused then resume and then stop
+notify();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,14 +108,26 @@ public class Play extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -99,14 +140,19 @@ public class Play extends javax.swing.JFrame {
 
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 610, 30, 40));
 
-        jButton2.setText("PAUSA");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 610, -1, -1));
+        jLabel4.setText("MONEDAS: ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+
+        jLabel6.setText("VIDA");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
+
+        jLabel7.setText("jLabel7");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
         jMenu1.setText("Graficar");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -125,26 +171,35 @@ public class Play extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Opciones");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem2.setText("Pausar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("Reanudar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    pausa = pausa+1;
-    if((pausa % 2)!=0){
-      h.interrupt();
-      m.interrupt();
-     
-    }
-    else{
-        h.resume();
-        m.resume();
-        
-        
-    }
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
@@ -160,16 +215,53 @@ public class Play extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-    if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
-        mario.setLocation(mario.getX()+50, mario.getY());
-    }    
-    if(evt.getKeyCode()==KeyEvent.VK_LEFT){
-        mario.setLocation(mario.getX()-50, mario.getY());
-    }    
-    
+        int columna;
+        int fila;
+        Personaje p;
+        if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
+            movimiento =0;
+            System.out.println("movimiento "+movimiento);
+            //g.start();
+        }
+        if(evt.getKeyCode()==KeyEvent.VK_LEFT){
+            movimiento =1;
+        }   
+        if((evt.getKeyCode()==KeyEvent.VK_A)){
+            movimiento =5;           
+        }    
+        if((evt.getKeyCode()==KeyEvent.VK_S)){
+            movimiento = 14;
+        }
 
 // TODO add your handling code here:
     }//GEN-LAST:event_formKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+            System.out.println("Open :v");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+       
+     
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+         System.out.println("Pausa :v");
+         h.suspend();
+         m.suspend();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        System.out.println("estas vivo h o.o D: :v "+h.isAlive());
+        System.out.println("estas vivo m o.o D: :v "+m.isAlive());
+        h.resume();
+        m.resume();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,15 +301,37 @@ public class Play extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 
 int contador1=-1;
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+     }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        if(ke.getKeyChar()=='a'){
+            System.out.println("a :v");
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+    }
  private class Hilo extends Thread{
     //private int contador=0;
     
@@ -262,4 +376,364 @@ int contador1=-1;
     }
     }
     }
+ private class move extends Thread{
+    //private int contador=-1;
+    
+   public void run(){
+    while(true){
+                try {
+                    int columna;
+                    int fila;
+                    Personaje p;
+                    Personaje otro;
+                    if(movimiento==0){
+                        System.out.println(" :v dfasdfas :v");
+                    //eje y
+                        
+                        
+                    columna = (mario.getX()+50)/50;
+                    fila = (mario.getY()-340)/(-50);
+                    p = matriz.getPersonaje(fila, columna);
+                    if((p.tipo.compareTo("vacio")==0)|(p.tipo.compareTo("ficha")==0)|(p.tipo.compareTo("hongo")==0)|(p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("personaje")==0)|(p.tipo.compareTo("castillo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                        otro=matriz.getPersonaje(fila, columna-1);
+                        matriz.darPersonaje(fila,columna, otro);
+                        matriz.darPersonaje(fila,columna-1, p);
+
+                        if(p.tipo.compareTo("ficha")==0){
+                            moneda = moneda + 1;
+                            Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                            matriz.darPersonaje(fila, columna-1, vacio);
+                            jLabel5.setText(Integer.toString(moneda));
+                        };
+                        if(p.tipo.compareTo("hongo")==0){
+                            vida = vida + 1;
+                            Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                            matriz.darPersonaje(fila, columna-1, vacio);
+                            jLabel7.setText(Integer.toString(vida));
+                        };
+                        if((p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                            vida = vida - 1;
+                            jLabel7.setText(Integer.toString(vida));
+                        };
+                        if((p.tipo.compareTo("castillo")==0)){
+                                JOptionPane.showMessageDialog(null, "   GANO X3 ");
+                            }    
+                            if(vida<=0){
+                                         JOptionPane.showMessageDialog(null, "  PERDIU X3 ");   
+                                         //System.exit(0);
+                                    }
+                        mario.setLocation(mario.getX()+50, mario.getY());
+                        
+                     }
+                    
+                    if((p.tipo.compareTo("pared")==0)|(p.tipo.compareTo("suelo")==0)){
+                       movimiento=-1;
+                    }
+                    
+                        movimiento = 7;
+                    }if(movimiento==1){
+                                
+                                columna = (mario.getX()-50)/50;
+                                fila = (mario.getY()-340)/(-50);
+                                p = matriz.getPersonaje(fila, columna);
+                                if((p.tipo.compareTo("vacio")==0)|(p.tipo.compareTo("ficha")==0)|(p.tipo.compareTo("hongo")==0)|(p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("personaje")==0)|(p.tipo.compareTo("castillo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                                        otro=matriz.getPersonaje(fila, columna+1);
+                                        matriz.darPersonaje(fila,columna, otro);
+                                        matriz.darPersonaje(fila,columna+1, p);
+
+                                    if(p.tipo.compareTo("ficha")==0){
+                                        moneda = moneda + 1;
+                                        Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                        matriz.darPersonaje(fila, columna+1, vacio);
+                                        jLabel5.setText(Integer.toString(moneda));
+                                    };
+                                    if(p.tipo.compareTo("hongo")==0){
+                                        vida = vida + 1;
+                                        Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                        matriz.darPersonaje(fila, columna+1, vacio);
+                                        jLabel7.setText(Integer.toString(vida));
+                                    };
+                                    if((p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                                        vida = vida - 1;
+                                        jLabel7.setText(Integer.toString(vida));
+                                    };
+                                    if((p.tipo.compareTo("castillo")==0)){
+                                        JOptionPane.showMessageDialog(null, "   GANO X3 ");
+                                        }    
+                                    if(vida<=0){
+                                         JOptionPane.showMessageDialog(null, "  PERDIU X3 ");   
+                                         //System.exit(0);
+                                    }                                mario.setLocation(mario.getX()-50, mario.getY());
+                      
+                                }
+                    
+                                if((p.tipo.compareTo("pared")==0)|(p.tipo.compareTo("suelo")==0)){
+                                        movimiento=-1;
+                                }
+                                movimiento=7; 
+                    }if(movimiento==5){
+                           
+                        columna = (mario.getX()/50);
+                        fila = (mario.getY()-340-50)/(-50);
+                        p = matriz.getPersonaje(fila,columna);
+                        if((p.tipo.compareTo("vacio")==0)|(p.tipo.compareTo("ficha")==0)|(p.tipo.compareTo("hongo")==0)|(p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("personaje")==0)|(p.tipo.compareTo("castillo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                                if(p.tipo.compareTo("vacio")==0){
+                                    otro=matriz.getPersonaje(fila-1, columna);
+                                    matriz.darPersonaje(fila,columna, otro);
+                                    matriz.darPersonaje(fila-1,columna, p);
+                                }
+                                if(p.tipo.compareTo("ficha")==0){
+                                    moneda = moneda + 1;
+                                    Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                     matriz.darPersonaje(fila, columna-1, vacio);
+                                    jLabel5.setText(Integer.toString(moneda));
+                                };
+                                if(p.tipo.compareTo("hongo")==0){
+                                    vida = vida + 1;
+                                    Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                    matriz.darPersonaje(fila, columna-1, vacio);
+                                    jLabel7.setText(Integer.toString(vida));
+                                };
+                                if((p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                                    vida = vida - 1;
+                                    jLabel7.setText(Integer.toString(vida));
+                                };
+                                if((p.tipo.compareTo("castillo")==0)){
+                                    JOptionPane.showMessageDialog(null, "   GANO X3 ");
+                                }    
+                                if(vida<=0){
+                                         JOptionPane.showMessageDialog(null, "  PERDIU X3 ");   
+                                         //System.exit(0);
+                                    }
+                                mario.setLocation(mario.getX(), mario.getY()-50);
+                         }else{
+                            movimiento = 7;
+                        }
+                         movimiento=11;
+                    }if(movimiento==7){
+                        //eje y
+                        
+                        fila = (mario.getY()-340+50)/(-50);
+                        columna = (mario.getX()/50);
+                        p = matriz.getPersonaje(fila, columna);
+                        
+                        if((p.tipo.compareTo("pared")==0)|(p.tipo.compareTo("suelo")==0)){
+                            movimiento=-1;
+                        }
+                        else{
+                            otro=matriz.getPersonaje(fila+1, columna);
+                            matriz.darPersonaje(fila,columna, otro);
+                            matriz.darPersonaje(fila+1,columna, p);
+                        
+                            mario.setLocation(mario.getX(),mario.getY()+50);
+                            matriz.darPersonaje(mario.getY(),mario.getX(), p);
+                            movimiento=7;
+                            if(mario.getY()==340){
+                                JOptionPane.showMessageDialog(null,"Game Over :v");
+                                System.exit(0);
+                            }
+                        }
+                    
+                    }if(movimiento==11){
+                        columna = (mario.getX()/50);
+                        fila = (mario.getY()-340-50)/(-50);
+                        p = matriz.getPersonaje(fila,columna);
+                        if((p.tipo.compareTo("vacio")==0)|(p.tipo.compareTo("ficha")==0)|(p.tipo.compareTo("hongo")==0)|(p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("personaje")==0)|(p.tipo.compareTo("castillo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                            if(p.tipo.compareTo("vacio")==0){
+                                    otro=matriz.getPersonaje(fila-1, columna);
+                                    matriz.darPersonaje(fila,columna, otro);
+                                    matriz.darPersonaje(fila-1,columna, p);
+                            } 
+                            if(p.tipo.compareTo("ficha")==0){
+                            moneda = moneda + 1;
+                            Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                            matriz.darPersonaje(fila, columna-1, vacio);
+                            jLabel5.setText(Integer.toString(moneda));
+                        };
+                            if(p.tipo.compareTo("hongo")==0){
+                            vida = vida + 1;
+                            Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                            matriz.darPersonaje(fila, columna-1, vacio);
+                            jLabel7.setText(Integer.toString(vida));
+                        };
+                            if((p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                            vida = vida - 1;
+                            jLabel7.setText(Integer.toString(vida));
+                        };
+                            if((p.tipo.compareTo("castillo")==0)){
+                                JOptionPane.showMessageDialog(null, "   GANO X3 ");
+                            }    
+                            if(vida<=0){
+                                         JOptionPane.showMessageDialog(null, "  PERDIU X3 ");   
+                                         //System.exit(0);
+                                    }
+                            mario.setLocation(mario.getX(), mario.getY()-50);
+                         }
+                    
+                        columna = (mario.getX()+50)/50;
+                        fila = (mario.getY()-340)/(-50);
+                        p = matriz.getPersonaje(fila, columna);
+                        if((p.tipo.compareTo("vacio")==0)|(p.tipo.compareTo("ficha")==0)|(p.tipo.compareTo("hongo")==0)|(p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("personaje")==0)|(p.tipo.compareTo("castillo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                             otro=matriz.getPersonaje(fila, columna-1);
+                             matriz.darPersonaje(fila,columna, otro);
+                             matriz.darPersonaje(fila,columna-1, p);
+                            if(p.tipo.compareTo("ficha")==0){
+                                moneda = moneda + 1;
+                                Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                matriz.darPersonaje(fila, columna-1, vacio);
+                                jLabel5.setText(Integer.toString(moneda));
+                            };
+                            if(p.tipo.compareTo("hongo")==0){
+                                vida = vida + 1;
+                                Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                matriz.darPersonaje(fila, columna-1, vacio);
+                                jLabel7.setText(Integer.toString(vida));
+                            };
+                            if((p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                                vida = vida - 1;
+                                jLabel7.setText(Integer.toString(vida));
+                            };
+                            if((p.tipo.compareTo("castillo")==0)){
+                                JOptionPane.showMessageDialog(null, "   GANO X3 ");
+                            }    
+                            if(vida<=0){
+                                         JOptionPane.showMessageDialog(null, "  PERDIU X3 ");   
+                                         //System.exit(0);
+                                    }
+                            mario.setLocation(mario.getX()+50, mario.getY());
+                        }
+                    
+                        if((p.tipo.compareTo("pared")==0)|(p.tipo.compareTo("suelo")==0)){
+                            movimiento=-1;
+                        }else{
+                            movimiento=7;
+                        }
+                    }if(movimiento==14){
+                         columna = (mario.getX()/50);
+                         fila = (mario.getY()-340-50)/(-50);
+                         p = matriz.getPersonaje(fila,columna);
+                        if((p.tipo.compareTo("vacio")==0)|(p.tipo.compareTo("ficha")==0)|(p.tipo.compareTo("hongo")==0)|(p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("personaje")==0)|(p.tipo.compareTo("castillo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                             if(p.tipo.compareTo("vacio")==0){
+                                    otro=matriz.getPersonaje(fila-1, columna);
+                                    matriz.darPersonaje(fila,columna, otro);
+                                    matriz.darPersonaje(fila-1,columna, p);
+                            }
+                            if(p.tipo.compareTo("ficha")==0){
+                                moneda = moneda + 1;
+                                Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                matriz.darPersonaje(fila, columna-1, vacio);
+                                jLabel5.setText(Integer.toString(moneda));
+                            };
+                            if(p.tipo.compareTo("hongo")==0){
+                                vida = vida + 1;
+                                Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                matriz.darPersonaje(fila, columna-1, vacio);
+                                jLabel7.setText(Integer.toString(vida));
+                            };
+                            if((p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                                vida = vida - 1;
+                                jLabel7.setText(Integer.toString(vida));
+                            };
+                            if((p.tipo.compareTo("castillo")==0)){
+                                JOptionPane.showMessageDialog(null, "   GANO X3 ");
+                            }    
+                            if(vida<=0){
+                                         JOptionPane.showMessageDialog(null, "  PERDIU X3 ");   
+                                         //System.exit(0);
+                                    }     
+                             mario.setLocation(mario.getX(), mario.getY()-50);
+                         }else{
+                            movimiento = 7;
+                        }
+                         movimiento=17;
+                    }if(movimiento==17){
+                        columna = (mario.getX()/50);
+                        fila = (mario.getY()-340-50)/(-50);
+                        p = matriz.getPersonaje(fila,columna);
+                        
+                        if((p.tipo.compareTo("vacio")==0)|(p.tipo.compareTo("ficha")==0)|(p.tipo.compareTo("hongo")==0)|(p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("personaje")==0)|(p.tipo.compareTo("castillo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                            if(p.tipo.compareTo("vacio")==0){
+                                    otro=matriz.getPersonaje(fila-1, columna);
+                                    matriz.darPersonaje(fila,columna, otro);
+                                    matriz.darPersonaje(fila-1,columna, p);
+                            }
+                            if(p.tipo.compareTo("ficha")==0){
+                                moneda = moneda + 1;
+                                Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                matriz.darPersonaje(fila, columna-1, vacio);
+                                jLabel5.setText(Integer.toString(moneda));
+                            };
+                            if(p.tipo.compareTo("hongo")==0){
+                                vida = vida + 1;
+                                Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                matriz.darPersonaje(fila, columna-1, vacio);
+                                jLabel7.setText(Integer.toString(vida));
+                            };
+                            if((p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                                vida = vida - 1;
+                                jLabel7.setText(Integer.toString(vida));
+                            };
+                            if((p.tipo.compareTo("castillo")==0)){
+                                JOptionPane.showMessageDialog(null, "   GANO X3 ");
+                            }    
+                            if(vida<=0){
+                                         JOptionPane.showMessageDialog(null, "  PERDIU X3 ");   
+                                         //System.exit(0);
+                                    }
+                            mario.setLocation(mario.getX(), mario.getY()-50);
+                         }
+                    
+                        columna = (mario.getX()-50)/50;
+                        fila = (mario.getY()-340)/(-50);
+                        p = matriz.getPersonaje(fila, columna);
+                        if((p.tipo.compareTo("vacio")==0)|(p.tipo.compareTo("ficha")==0)|(p.tipo.compareTo("hongo")==0)|(p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("personaje")==0)|(p.tipo.compareTo("castillo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                            if(p.tipo.compareTo("vacio")==0){
+                                otro=matriz.getPersonaje(fila, columna+1);
+                                matriz.darPersonaje(fila,columna, otro);
+                                matriz.darPersonaje(fila,columna+1, p);
+                            }
+                            if(p.tipo.compareTo("ficha")==0){
+                                moneda = moneda + 1;
+                                Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                 matriz.darPersonaje(fila, columna-1, vacio);
+                                jLabel5.setText(Integer.toString(moneda));
+                            };
+                            if(p.tipo.compareTo("hongo")==0){
+                                vida = vida + 1;
+                                Personaje vacio = new Personaje(0,"vacio","vacio.txt",0,"vacio");
+                                matriz.darPersonaje(fila, columna-1, vacio);
+                                jLabel7.setText(Integer.toString(vida));
+                            };
+                            if((p.tipo.compareTo("monstruo")==0)|(p.tipo.compareTo("tortuga")==0)){
+                                vida = vida - 1;
+                                jLabel7.setText(Integer.toString(vida));
+                            };
+                            if((p.tipo.compareTo("castillo")==0)){
+                                JOptionPane.showMessageDialog(null, "   GANO X3 ");
+                            }    
+                            if(vida<=0){
+                                         JOptionPane.showMessageDialog(null, "  PERDIU X3 ");   
+                                         //System.exit(0);
+                                    }
+                            mario.setLocation(mario.getX()-50, mario.getY());
+                        }
+                    
+                        if((p.tipo.compareTo("pared")==0)|(p.tipo.compareTo("suelo")==0)){
+                            movimiento=-1;
+                        }else{
+                            movimiento=7;
+                        }
+                    }
+                    
+                    Thread.sleep(1500);
+                    
+          
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Play.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              
+    }
+    }
+    }
+ 
 }

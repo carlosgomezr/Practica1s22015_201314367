@@ -2,7 +2,291 @@ digraph grafica {
  rankdir=TB; 
  label= "MATRIZ ORTOGONAL XD lol"  nodesep=0.5 node [shape=record];
 subgraph g{ 
- nodef1c0[label=" 
+ nodef3c0[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 0 "];
+nodef3c1[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 1 "];
+nodef3c1->nodef3c0;
+nodef3c0->nodef3c1;
+{rank=same; nodef3c0 nodef3c1}nodef3c1[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 1 "];
+nodef3c2[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 2 "];
+nodef3c2->nodef3c1;
+nodef3c1->nodef3c2;
+{rank=same; nodef3c1 nodef3c2}nodef3c2[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 2 "];
+nodef3c3[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 3 "];
+nodef3c3->nodef3c2;
+nodef3c2->nodef3c3;
+{rank=same; nodef3c2 nodef3c3}nodef3c3[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 3 "];
+nodef3c4[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 4 "];
+nodef3c4->nodef3c3;
+nodef3c3->nodef3c4;
+{rank=same; nodef3c3 nodef3c4}nodef3c4[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 4 "];
+nodef3c5[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 5 "];
+nodef3c5->nodef3c4;
+nodef3c4->nodef3c5;
+{rank=same; nodef3c4 nodef3c5}nodef3c5[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 5 "];
+nodef3c6[label=" 
+ id: 0 
+ nombre:  
+ tipo: personaje 
+ f: 3 
+ c: 6 "];
+nodef3c6->nodef3c5;
+nodef3c5->nodef3c6;
+{rank=same; nodef3c5 nodef3c6}nodef3c6[label=" 
+ id: 0 
+ nombre:  
+ tipo: personaje 
+ f: 3 
+ c: 6 "];
+nodef3c7[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 7 "];
+nodef3c7->nodef3c6;
+nodef3c6->nodef3c7;
+{rank=same; nodef3c6 nodef3c7}nodef3c7[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 7 "];
+nodef3c8[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 8 "];
+nodef3c8->nodef3c7;
+nodef3c7->nodef3c8;
+{rank=same; nodef3c7 nodef3c8}nodef3c8[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 8 "];
+nodef3c9[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 3 
+ c: 9 "];
+nodef3c9->nodef3c8;
+nodef3c8->nodef3c9;
+{rank=same; nodef3c8 nodef3c9}nodef3c9[label=" 
+ id: 0 
+ nombre: vacio 
+ f: 3 
+ cc: 9 
+ tipo: vacio "];
+nodef2c0[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 2 
+ c: 0 "];
+nodef2c1[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 2 
+ c: 1 "];
+nodef2c1->nodef2c0;
+nodef2c0->nodef2c1;
+{rank=same; nodef2c0 nodef2c1}nodef3c0->nodef2c0;
+nodef2c0->nodef3c0;
+nodef2c1[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 2 
+ c: 1 "];
+nodef2c2[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 2 
+ c: 2 "];
+nodef2c2->nodef2c1;
+nodef2c1->nodef2c2;
+{rank=same; nodef2c1 nodef2c2}nodef3c1->nodef2c1;
+nodef2c1->nodef3c1;
+nodef2c2[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 2 
+ c: 2 "];
+nodef2c3[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 2 
+ c: 3 "];
+nodef2c3->nodef2c2;
+nodef2c2->nodef2c3;
+{rank=same; nodef2c2 nodef2c3}nodef3c2->nodef2c2;
+nodef2c2->nodef3c2;
+nodef2c3[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 2 
+ c: 3 "];
+nodef2c4[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 2 
+ c: 4 "];
+nodef2c4->nodef2c3;
+nodef2c3->nodef2c4;
+{rank=same; nodef2c3 nodef2c4}nodef3c3->nodef2c3;
+nodef2c3->nodef3c3;
+nodef2c4[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 2 
+ c: 4 "];
+nodef2c5[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 2 
+ c: 5 "];
+nodef2c5->nodef2c4;
+nodef2c4->nodef2c5;
+{rank=same; nodef2c4 nodef2c5}nodef3c4->nodef2c4;
+nodef2c4->nodef3c4;
+nodef2c5[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 2 
+ c: 5 "];
+nodef2c6[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 2 
+ c: 6 "];
+nodef2c6->nodef2c5;
+nodef2c5->nodef2c6;
+{rank=same; nodef2c5 nodef2c6}nodef3c5->nodef2c5;
+nodef2c5->nodef3c5;
+nodef2c6[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 2 
+ c: 6 "];
+nodef2c7[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 2 
+ c: 7 "];
+nodef2c7->nodef2c6;
+nodef2c6->nodef2c7;
+{rank=same; nodef2c6 nodef2c7}nodef3c6->nodef2c6;
+nodef2c6->nodef3c6;
+nodef2c7[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 2 
+ c: 7 "];
+nodef2c8[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 2 
+ c: 8 "];
+nodef2c8->nodef2c7;
+nodef2c7->nodef2c8;
+{rank=same; nodef2c7 nodef2c8}nodef3c7->nodef2c7;
+nodef2c7->nodef3c7;
+nodef2c8[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 2 
+ c: 8 "];
+nodef2c9[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 2 
+ c: 9 "];
+nodef2c9->nodef2c8;
+nodef2c8->nodef2c9;
+{rank=same; nodef2c8 nodef2c9}nodef3c8->nodef2c8;
+nodef2c8->nodef3c8;
+nodef2c9[label=" 
+ id: 0 
+ nombre: vacio 
+ f: 2 
+ cc: 9 
+ tipo: vacio "];
+nodef3c9->nodef2c9;
+nodef2c9->nodef3c9;
+nodef1c0[label=" 
  id: 0 
  nombre: vacio 
  tipo: vacio 
@@ -16,7 +300,9 @@ nodef1c1[label="
  c: 1 "];
 nodef1c1->nodef1c0;
 nodef1c0->nodef1c1;
-{rank=same; nodef1c0 nodef1c1}nodef1c1[label=" 
+{rank=same; nodef1c0 nodef1c1}nodef2c0->nodef1c0;
+nodef1c0->nodef2c0;
+nodef1c1[label=" 
  id: 0 
  nombre: vacio 
  tipo: vacio 
@@ -30,22 +316,138 @@ nodef1c2[label="
  c: 2 "];
 nodef1c2->nodef1c1;
 nodef1c1->nodef1c2;
-{rank=same; nodef1c1 nodef1c2}nodef1c2[label=" 
- id: 0 
- nombre: vacio 
- f: 1 
- cc: 2 
- tipo: vacio "];
-nodef0c0[label=" 
+{rank=same; nodef1c1 nodef1c2}nodef2c1->nodef1c1;
+nodef1c1->nodef2c1;
+nodef1c2[label=" 
  id: 0 
  nombre: vacio 
  tipo: vacio 
+ f: 1 
+ c: 2 "];
+nodef1c3[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 3 "];
+nodef1c3->nodef1c2;
+nodef1c2->nodef1c3;
+{rank=same; nodef1c2 nodef1c3}nodef2c2->nodef1c2;
+nodef1c2->nodef2c2;
+nodef1c3[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 3 "];
+nodef1c4[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 4 "];
+nodef1c4->nodef1c3;
+nodef1c3->nodef1c4;
+{rank=same; nodef1c3 nodef1c4}nodef2c3->nodef1c3;
+nodef1c3->nodef2c3;
+nodef1c4[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 4 "];
+nodef1c5[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 5 "];
+nodef1c5->nodef1c4;
+nodef1c4->nodef1c5;
+{rank=same; nodef1c4 nodef1c5}nodef2c4->nodef1c4;
+nodef1c4->nodef2c4;
+nodef1c5[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 5 "];
+nodef1c6[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 6 "];
+nodef1c6->nodef1c5;
+nodef1c5->nodef1c6;
+{rank=same; nodef1c5 nodef1c6}nodef2c5->nodef1c5;
+nodef1c5->nodef2c5;
+nodef1c6[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 6 "];
+nodef1c7[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 7 "];
+nodef1c7->nodef1c6;
+nodef1c6->nodef1c7;
+{rank=same; nodef1c6 nodef1c7}nodef2c6->nodef1c6;
+nodef1c6->nodef2c6;
+nodef1c7[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 7 "];
+nodef1c8[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 8 "];
+nodef1c8->nodef1c7;
+nodef1c7->nodef1c8;
+{rank=same; nodef1c7 nodef1c8}nodef2c7->nodef1c7;
+nodef1c7->nodef2c7;
+nodef1c8[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 8 "];
+nodef1c9[label=" 
+ id: 0 
+ nombre: vacio 
+ tipo: vacio 
+ f: 1 
+ c: 9 "];
+nodef1c9->nodef1c8;
+nodef1c8->nodef1c9;
+{rank=same; nodef1c8 nodef1c9}nodef2c8->nodef1c8;
+nodef1c8->nodef2c8;
+nodef1c9[label=" 
+ id: 0 
+ nombre: vacio 
+ f: 1 
+ cc: 9 
+ tipo: vacio "];
+nodef2c9->nodef1c9;
+nodef1c9->nodef2c9;
+nodef0c0[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
  f: 0 
  c: 0 "];
 nodef0c1[label=" 
  id: 0 
- nombre: vacio 
- tipo: vacio 
+ nombre:  
+ tipo: suelo 
  f: 0 
  c: 1 "];
 nodef0c1->nodef0c0;
@@ -54,14 +456,14 @@ nodef0c0->nodef0c1;
 nodef0c0->nodef1c0;
 nodef0c1[label=" 
  id: 0 
- nombre: vacio 
- tipo: vacio 
+ nombre:  
+ tipo: suelo 
  f: 0 
  c: 1 "];
 nodef0c2[label=" 
  id: 0 
- nombre: vacio 
- tipo: vacio 
+ nombre:  
+ tipo: suelo 
  f: 0 
  c: 2 "];
 nodef0c2->nodef0c1;
@@ -70,12 +472,124 @@ nodef0c1->nodef0c2;
 nodef0c1->nodef1c1;
 nodef0c2[label=" 
  id: 0 
- nombre: vacio 
+ nombre:  
+ tipo: suelo 
  f: 0 
- cc: 2 
- tipo: vacio "];
-nodef1c2->nodef0c2;
+ c: 2 "];
+nodef0c3[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
+ f: 0 
+ c: 3 "];
+nodef0c3->nodef0c2;
+nodef0c2->nodef0c3;
+{rank=same; nodef0c2 nodef0c3}nodef1c2->nodef0c2;
 nodef0c2->nodef1c2;
+nodef0c3[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
+ f: 0 
+ c: 3 "];
+nodef0c4[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
+ f: 0 
+ c: 4 "];
+nodef0c4->nodef0c3;
+nodef0c3->nodef0c4;
+{rank=same; nodef0c3 nodef0c4}nodef1c3->nodef0c3;
+nodef0c3->nodef1c3;
+nodef0c4[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
+ f: 0 
+ c: 4 "];
+nodef0c5[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
+ f: 0 
+ c: 5 "];
+nodef0c5->nodef0c4;
+nodef0c4->nodef0c5;
+{rank=same; nodef0c4 nodef0c5}nodef1c4->nodef0c4;
+nodef0c4->nodef1c4;
+nodef0c5[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
+ f: 0 
+ c: 5 "];
+nodef0c6[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
+ f: 0 
+ c: 6 "];
+nodef0c6->nodef0c5;
+nodef0c5->nodef0c6;
+{rank=same; nodef0c5 nodef0c6}nodef1c5->nodef0c5;
+nodef0c5->nodef1c5;
+nodef0c6[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
+ f: 0 
+ c: 6 "];
+nodef0c7[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
+ f: 0 
+ c: 7 "];
+nodef0c7->nodef0c6;
+nodef0c6->nodef0c7;
+{rank=same; nodef0c6 nodef0c7}nodef1c6->nodef0c6;
+nodef0c6->nodef1c6;
+nodef0c7[label=" 
+ id: 0 
+ nombre:  
+ tipo: suelo 
+ f: 0 
+ c: 7 "];
+nodef0c8[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 0 
+ c: 8 "];
+nodef0c8->nodef0c7;
+nodef0c7->nodef0c8;
+{rank=same; nodef0c7 nodef0c8}nodef1c7->nodef0c7;
+nodef0c7->nodef1c7;
+nodef0c8[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 0 
+ c: 8 "];
+nodef0c9[label=" 
+ id: 0 
+ nombre:  
+ tipo: pared 
+ f: 0 
+ c: 9 "];
+nodef0c9->nodef0c8;
+nodef0c8->nodef0c9;
+{rank=same; nodef0c8 nodef0c9}nodef1c8->nodef0c8;
+nodef0c8->nodef1c8;
+nodef0c9[label=" 
+ id: 0 
+ nombre:  
+ f: 0 
+ cc: 9 
+ tipo: pared "];
+nodef1c9->nodef0c9;
+nodef0c9->nodef1c9;
 }
  rank=same subgraph d{ 
  }

@@ -27,6 +27,7 @@ public class Make extends javax.swing.JFrame {
     public static int tamfila=2;
     public static int tamcolumna=4;
     public static Raiz matriz = new Raiz();
+    public static Raiz reinicio = new Raiz();
     private JPanel jPanel0;
     private JScrollPane scroll;
     private JPanel jPanel1;
@@ -163,11 +164,17 @@ public class Make extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -272,6 +279,14 @@ public class Make extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("GRAFICAR LISTA");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
@@ -460,6 +475,8 @@ public class Make extends javax.swing.JFrame {
         p.matriz=matriz;
         p.tamfila=this.tamfila;
         p.tamcolumna=this.tamcolumna;
+        reinicio = matriz;
+        p.reini = this.reinicio;
         System.out.println("el q mando tamfila "+this.tamfila);
         System.out.println("el q mando tamcolumna "+this.tamcolumna);
         this.setVisible(false);
@@ -469,12 +486,12 @@ public class Make extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-    String nombrexx=jTextField3.getText();
-    int nombrex = Integer.parseInt(nombrexx);
-    if(nombrex!=0){
+   
     try{    
        
-       
+           String nombrexx=jTextField3.getText();
+           int nombrex = Integer.parseInt(nombrexx);
+           if(nombrex!=0){
         for(int i=0;i<tamfila;i++){
             String name = nombrexx+","+i;
             Portada p = new Portada();
@@ -482,27 +499,29 @@ public class Make extends javax.swing.JFrame {
             
         }
         matriz.eliminarC(matriz.columna.ultimo,nombrex);
-        tamcolumna=tamcolumna-1;
+        tamcolumna=tamcolumna-1;}
+            else{
+            JOptionPane.showMessageDialog(this,"COLUMNA NO VALIDA SELECCIONE OTRA XD");
+            }
     }
     catch(Exception ex){
     
     }
-    }
-    else{
-        JOptionPane.showMessageDialog(this,"COLUMNA NO VALIDA SELECCIONE OTRA XD");
-    }
+    
+   
         
         
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-    String nombreyy=jTextField4.getText();
-    int nombrey = Integer.parseInt(nombreyy);
-    if(nombrey!=0){
+   
+   
     try{    
        
-       
+        String nombreyy=jTextField4.getText();
+        int nombrey = Integer.parseInt(nombreyy);
+        if(nombrey!=0){
         for(int i=0;i<tamcolumna;i++){
             String name = i+","+nombreyy;
             Portada p = new Portada();
@@ -510,17 +529,36 @@ public class Make extends javax.swing.JFrame {
             
         }
         matriz.eliminarF(matriz.fila.ultimo,nombrey);
-        tamfila=tamfila-1;
+        tamfila=tamfila-1;}
+         else{
+        JOptionPane.showMessageDialog(this,"FILA NO VALIDA SELECCIONE OTRA XD");
+        }
     }
     catch(Exception ex){
     
     }
-    }
-    else{
-        JOptionPane.showMessageDialog(this,"FILA NO VALIDA SELECCIONE OTRA XD");
-    }
+    
+   
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if(evt.getKeyChar()=='d'){
+       System.out.println("presionaste D xD");
+       
+       
+   }
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Funcion f = new Funcion();
+        f.generarListaDoble(lista);
+        f.generar("LISTA DOBLE PERSONAJES TABLERO");
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -576,6 +614,7 @@ public class Make extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

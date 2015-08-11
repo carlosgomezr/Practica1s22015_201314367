@@ -19,12 +19,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
+
 /**
  *
  * @author Carlos Gomez
  */
 public class Portada implements Runnable {
-    public JLabel mario;
+JLabel hero;   
+int herox=0;
+int heroy=0;
+ImageIcon heroimage;
     public void crear(listasdobles lista,JPanel panel, String album, String portada, int id,int mario, int castillo,JButton bmario, JButton bcastillo,int posy){
    album = album + " ";     
    JLabel numero = new JLabel("No. "+id);
@@ -182,10 +186,7 @@ public class Portada implements Runnable {
     panel.validate();
     }
      
-     public JLabel heroe(JLabel icon){
-     
-         return mario;
-     }
+    
      public void crearPlay(JPanel objeto,int x,int y, int nombrex, int nombrey, Raiz matriz){
         JLabel icon = new javax.swing.JLabel();
         icon.setVisible(true);
@@ -207,17 +208,28 @@ public class Portada implements Runnable {
             System.out.println("ENCONTRE A MONSTRUO X3");
             Figura monstruo = new Figura(icon,matriz,nombrey,nombrex);
             monstruo.start();
+            
         }
         if(p.tipo.compareTo("tortuga")==0){
             System.out.println("ENCONTRE A TORTUGA X3");
             Figura tortuga = new Figura(icon,matriz,nombrey,nombrex);
             tortuga.start();
         }
+        if(p.tipo.compareTo("ficha")==0){
+            Objeto ficha = new Objeto(icon,matriz,nombrey,nombrex);
+            ficha.start();
+        }
+        if(p.tipo.compareTo("hongo")==0){
+            Objeto hongo = new Objeto(icon,matriz,nombrey,nombrex);
+            hongo.start();
+        }
         if(p.tipo.compareTo("personaje")==0){
              System.out.println("ENCONTRE A MARIO X3");
-             mario = icon;
-            
-        }
+             hero = icon;
+             herox = x;
+             heroy = y;
+             heroimage = icono;
+            }
      }
      
      public void crearMatriz(JPanel objeto,JPanel panel,String portada,int x,int y,int nombrex,int nombrey,listasdobles lista, int estructura, Raiz r){
